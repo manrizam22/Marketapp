@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اجاره گیفت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #dfeaf5;
+    --card: #ffffff;
+    --ink: #0f2a43;
+    --muted: #5d7288;
+    --line: #c5d5e5;
+    --accent: #ff5c7a;
+    --accent-ink: #ffffff;
+    --tile: #eef4fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101c2b;
+      --card: #172638;
+      --ink: #e8f0f8;
+      --muted: #8fa6bd;
+      --line: #263b52;
+      --accent: #ff6f8a;
+      --accent-ink: #1a0b10;
+      --tile: #1d3047;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Vazirmatn", system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  header {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 20px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  h1 { margin: 0; font-size: 1.7rem; font-weight: 800; }
+  .sub { color: var(--muted); font-size: .92rem; margin: 2px 0 0; }
+  input[type="search"] {
+    font: inherit;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px;
+    min-width: 240px;
+  }
+  input[type="search"]:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 12px 20px 60px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .tile {
+    aspect-ratio: 1;
+    background: var(--tile);
+    display: grid;
+    place-items: center;
+    padding: 14px;
+  }
+  .tile img { width: 100%; height: 100%; object-fit: contain; }
+  .tile .noimg { color: var(--muted); font-size: .8rem; }
+  .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .name { font-weight: 600; font-size: .98rem; direction: ltr; text-align: right; overflow-wrap: anywhere; }
+  .traits { color: var(--muted); font-size: .8rem; direction: ltr; text-align: right; }
+  .row { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 8px; gap: 8px; }
+  .price { font-weight: 800; font-size: 1.05rem; }
+  .price small { font-weight: 400; color: var(--muted); }
+  .rent {
+    font: inherit;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 0;
+    border-radius: 10px;
+    padding: 7px 14px;
+    cursor: pointer;
+  }
+  .more { display: block; margin: 28px auto 0; font: inherit; font-weight: 600; padding: 11px 28px;
+    border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+  .more[disabled] { opacity: .5; cursor: default; }
+  .msg { text-align: center; color: var(--muted); padding: 60px 0; }
+  .msg.err { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>اجاره گیفت</h1>
+    <p class="sub" id="count">در حال بارگذاری…</p>
+  </div>
+  <input type="search" id="q" placeholder="جستجوی نام یا مشخصات گیفت" aria-label="جستجو">
+</header>
+
+<main>
+  <div id="msg" class="msg" hidden></div>
+  <div class="grid" id="grid"></div>
+  <button class="more" id="more" hidden>نمایش بیشتر</button>
+</main>
+
+<script>
+  const grid = document.getElementById("grid");
+  const msg = document.getElementById("msg");
+  const moreBtn = document.getElementById("more");
+  const countEl = document.getElementById("count");
+  const searchEl = document.getElementById("q");
+
+  const PAGE = 48;
+  let all = [];        // همه‌ی گیفت‌ها از data/gifts.json
+  let visible = PAGE;  // چندتا نشون داده بشه
+  let loading = true;
+
+  function esc(s) {
+    return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  // اگه اولین تصویر لود نشد، میره سراغ بعدی؛ اگه هیچ‌کدوم نشد، متن «بدون تصویر»
+  function nextImage(img) {
+    const list = JSON.parse(img.dataset.srcs);
+    const i = Number(img.dataset.i) + 1;
+    if (i < list.length) {
+      img.dataset.i = i;
+      img.src = list[i];
+    } else {
+      img.replaceWith(Object.assign(document.createElement("span"), { className: "noimg", textContent: "بدون تصویر" }));
+    }
+  }
+
+  function card(item) {
+    const srcs = item.images || [];
+    const media = srcs.length
+      ? `<img src="${esc(srcs[0])}" alt="${esc(item.name)}" loading="lazy" data-i="0"
+              data-srcs='${esc(JSON.stringify(srcs))}' onerror="nextImage(this)">`
+      : `<span class="noimg">بدون تصویر</span>`;
+    const traits = Object.entries(item.attributes || {}).slice(0, 3)
+      .map(([k, v]) => `${k}: ${v}`).join(" | ");
+    const price = item.price != null ? `${esc(item.price)} <small>TON</small>` : `<small>قیمت نامشخص</small>`;
+    return `<article class="card">
+      <div class="tile">${media}</div>
+      <div class="body">
+        <div class="name">${esc(item.name)}</div>
+        <div class="traits">${esc(traits)}</div>
+        <div class="row">
+          <div class="price">${price}</div>
+          <button class="rent" data-id="${esc(item.id)}">اجاره</button>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function render() {
+    const q = searchEl.value.trim().toLowerCase();
+    const matched = !q ? all : all.filter(i =>
+      (i.name + " " + Object.values(i.attributes || {}).join(" ")).toLowerCase().includes(q));
+    grid.innerHTML = matched.slice(0, visible).map(card).join("");
+    countEl.textContent = `${matched.length} گیفت قابل اجاره`;
+    msg.hidden = matched.length > 0 || loading;
+    if (!matched.length && !loading) { msg.className = "msg"; msg.textContent = "گیفتی پیدا نشد."; }
+    moreBtn.hidden = matched.length <= visible;
+  }
+
+  async function load() {
+    try {
+      const res = await fetch("data/gifts.json?t=" + Date.now());
+      if (!res.ok) throw new Error("فایل data/gifts.json پیدا نشد. اول Action رو یه بار اجرا کن.");
+      const data = await res.json();
+      all = data.items || [];
+      if (data.updated_at) {
+        const d = new Date(data.updated_at);
+        document.querySelector(".sub").dataset.updated = d.toLocaleString("fa-IR");
+      }
+    } catch (e) {
+      msg.className = "msg err";
+      msg.textContent = e.message;
+      msg.hidden = false;
+    } finally {
+      loading = false;
+      render();
+      const u = document.querySelector(".sub").dataset.updated;
+      if (u && all.length) countEl.textContent += ` · آخرین بروزرسانی: ${u}`;
+    }
+  }
+
+  grid.addEventListener("click", e => {
+    const btn = e.target.closest(".rent");
+    if (!btn) return;
+    // اینجا مسیر پرداخت/اجاره‌ی خودت رو وصل کن (مثلاً rent_nft در API مارکت‌اپ)
+    alert("شناسه گیفت: " + btn.dataset.id);
+  });
+  searchEl.addEventListener("input", () => { visible = PAGE; render(); });
+  moreBtn.addEventListener("click", () => { visible += PAGE; render(); });
+  load();
+</script>
+</body>
+</html>
