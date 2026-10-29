@@ -1,1 +1,37 @@
+name: Update gifts
 
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # هر ۳۰ دقیقه (ممکنه GitHub چند دقیقه دیرتر اجرا کنه)
+  workflow_dispatch:          # اجرای دستی از تب Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-gifts
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Fetch gifts
+        env:
+          MARKETAPP_API_TOKEN: ${{ secrets.MARKETAPP_API_TOKEN }}
+        run: python fetch_gifts.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/gifts.json
+          git diff --cached --quiet || (git commit -m "Update gifts" && git push)
