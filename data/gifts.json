@@ -1,6 +1,6 @@
 {
-  "total": 35727,
-  "updated_at": 1793353494,
+  "total": 35722,
+  "updated_at": 1793353706,
   "gifts": [
     {
       "nft_address": "EQBqk6r_uX_5rK3Kd4dTNvzbhPqUKUrs4NeEIFIbiAq5fXrD",
@@ -110379,33 +110379,6 @@
       "collection_address": "EQAtgbhSHOqTxjuRLLOAab6T66FPcQWTNd_DT3VgCG1-tHJw"
     },
     {
-      "nft_address": "EQBXNhHWgVZiExCA6yu0HgJgNr20zAYXDonlkpBjlpgkkkdX",
-      "nft_name": "Crystal Ball #9387",
-      "owner": "EQBWwqDnJkdDEq1BSQmZkoJavFLFONrwlZUfj7G477zaCxaM",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Opacity"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Amber"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Happy Smile"
-        }
-      ],
-      "min_duration": 172800,
-      "max_duration": 15552000,
-      "price_per_day": "7490000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793227910,
-      "is_sellable_during_rent": false,
-      "collection_name": "Crystal Balls",
-      "collection_address": "EQAtgbhSHOqTxjuRLLOAab6T66FPcQWTNd_DT3VgCG1-tHJw"
-    },
-    {
       "nft_address": "EQCTXx63lFJIpYy8yPCTF7PjyXalRzWZb6SuFes0eOCS9K5l",
       "nft_name": "Crystal Ball #9517",
       "owner": "EQAinUFrIERa-YB3jf7OtYuVu6htIWdcBB1BEEetWkk8TBTE",
@@ -194214,33 +194187,6 @@
       "collection_address": "EQAUffQWl09_yhXDTp8oN13Px8ygPm0xcyNGhHOiONV-x3om"
     },
     {
-      "nft_address": "EQBoYzTqyu-8ImSmOsjdVfwzU_NvBVS6cjh6naZ56viz00yO",
-      "nft_name": "Fresh Socks #85890",
-      "owner": "EQDingbpQQ0K3YDzpC9DJ_m8rpEVkfaAozetqVrD7mQtnnv3",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Mad Scientist"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Carmine"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Dice"
-        }
-      ],
-      "min_duration": 604800,
-      "max_duration": 2592000,
-      "price_per_day": "50000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793193705,
-      "is_sellable_during_rent": false,
-      "collection_name": "Fresh Socks",
-      "collection_address": "EQAUffQWl09_yhXDTp8oN13Px8ygPm0xcyNGhHOiONV-x3om"
-    },
-    {
       "nft_address": "EQByZ71yRhn9_rtZG-i6eUsYB3NDAEkxjVlr83GAw-Zp43nx",
       "nft_name": "Fresh Socks #87165",
       "owner": "EQDA8ywVubDPj0tUQEMg0ChDrStmmMEwY5G5k564GZtwLqXU",
@@ -245023,6 +244969,33 @@
       "price_per_day": "14900000",
       "discount_per_day": 0.0,
       "listed_at": 1792710657,
+      "is_sellable_during_rent": false,
+      "collection_name": "Hypno Lollipops",
+      "collection_address": "EQC65Yy6N04vHoeCJ0yo4qll5eu-ZaWbS5nxsdilxymhmSus"
+    },
+    {
+      "nft_address": "EQCeedcj9178PiqCLQ-rAAGq5FvVkKn5C8thnRxiEMBBMO8y",
+      "nft_name": "Hypno Lollipop #82285",
+      "owner": "EQCqjvpBGZ0_qNS-CsPAC-qIKT8593EjBpl592Vt22HCQ_NN",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Telegram"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Battleship Grey"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Brain"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "34990000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353618,
       "is_sellable_during_rent": false,
       "collection_name": "Hypno Lollipops",
       "collection_address": "EQC65Yy6N04vHoeCJ0yo4qll5eu-ZaWbS5nxsdilxymhmSus"
@@ -388452,33 +388425,6 @@
       "collection_address": "EQDTro-ogJbS7o-OBD6bt2NysPt7SnGm5zfuRXGB1nE_rbGa"
     },
     {
-      "nft_address": "EQAJnupXVcWawJi6PzW9Qj9PXa41Jtya3-3PtXww-0ACuV3_",
-      "nft_name": "Kissed Frog #7323",
-      "owner": "EQBZe_YKoSF5JLjqytNJVMxjP3dIal-F62OGTpAipDPma8Qb",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Bronze"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Roman Silver"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Cunning Fox"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 1296000,
-      "price_per_day": "17000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793353342,
-      "is_sellable_during_rent": false,
-      "collection_name": "Kissed Frogs",
-      "collection_address": "EQDTro-ogJbS7o-OBD6bt2NysPt7SnGm5zfuRXGB1nE_rbGa"
-    },
-    {
       "nft_address": "EQDTGzAMEXvjXQKiyhf574C2yQZFBIXky6fbF_52Zi6P-8QY",
       "nft_name": "Kissed Frog #738",
       "owner": "EQBR2TCOUqpmKG55nQHl4s8Bg8T6JJsSG6dcYkO4IxySpInG",
@@ -531120,33 +531066,6 @@
       "collection_address": "EQBV5XozKA0e06Z5y6eL7pWrUUpEolbPhNdcNS0K4ZDk1jCs"
     },
     {
-      "nft_address": "EQCUfB2VxWRuBbYm33bBTpVIMWIv7HMM1-Tw5JsE8Uaqgqqc",
-      "nft_name": "Mood Pack #56068",
-      "owner": "EQDGU_vYIj6ac6wOJY8YCBivfT1SxVCvozLv3m2Rw23TJYj2",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Battle Royale"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Satin Gold"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Sun Mountain"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 2937600,
-      "price_per_day": "30000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793099232,
-      "is_sellable_during_rent": false,
-      "collection_name": "Mood Packs",
-      "collection_address": "EQBV5XozKA0e06Z5y6eL7pWrUUpEolbPhNdcNS0K4ZDk1jCs"
-    },
-    {
       "nft_address": "EQDGFeVZh_pApQpgMDx-ABThF-1bwlnP9gf96rgfO4wJVHdH",
       "nft_name": "Mood Pack #57709",
       "owner": "EQBR2TCOUqpmKG55nQHl4s8Bg8T6JJsSG6dcYkO4IxySpInG",
@@ -557553,33 +557472,6 @@
       "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
     },
     {
-      "nft_address": "EQDkOHQarjRorqqe8zxMJKMAbMGOoEH9zKIS3gsa7t8oY2Cc",
-      "nft_name": "Party Sparkler #127653",
-      "owner": "EQDCaRr4ZXxAv46TNQhwpsdhKIz8IqoBqbOvpWhBgvxplfdF",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Punk Caster"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Ivory White"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Cupcake"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 15552000,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1792921606,
-      "is_sellable_during_rent": false,
-      "collection_name": "Party Sparklers",
-      "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
-    },
-    {
       "nft_address": "EQCcEcdmc_f1EV7xZ2mg-rEJxphiC1ik73QYDoKWOacKW2PH",
       "nft_name": "Party Sparkler #130844",
       "owner": "EQAI7G5QhSrk84_HRIkKdyJrzNIQocDPU454J72ftfeaIIb4",
@@ -558255,33 +558147,6 @@
       "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
     },
     {
-      "nft_address": "EQDZ__4yESEUdfuOdpStPVapBGcG0OtPovOyDxZ1ndVQgsHZ",
-      "nft_name": "Party Sparkler #21143",
-      "owner": "EQBWwqDnJkdDEq1BSQmZkoJavFLFONrwlZUfj7G477zaCxaM",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Green Light"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Ivory White"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Shooting Star"
-        }
-      ],
-      "min_duration": 172800,
-      "max_duration": 15552000,
-      "price_per_day": "5000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793308883,
-      "is_sellable_during_rent": false,
-      "collection_name": "Party Sparklers",
-      "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
-    },
-    {
       "nft_address": "EQDPxlseNQTt_v4gMnhKNIChG0_VZOGqQwMuhB99P7wu0Zpl",
       "nft_name": "Party Sparkler #2138",
       "owner": "EQDirNcDX3XJa89qDqoT-AVqbZvTfv1TXx5wepH-YBlEu8TT",
@@ -558871,33 +558736,6 @@
       "price_per_day": "10000000",
       "discount_per_day": 0.0,
       "listed_at": 1791694322,
-      "is_sellable_during_rent": false,
-      "collection_name": "Party Sparklers",
-      "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
-    },
-    {
-      "nft_address": "EQAGl0V2EZQPsI1QpduGC7MGXlUBV7wT1PfNsvT_MVu1sxwq",
-      "nft_name": "Party Sparkler #33700",
-      "owner": "EQATppISs6IAgv95gsie5jhW2FAhxuTrHSrYvYAiiu8jbmHe",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Le Pepe"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Ivory White"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Star"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 15552000,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1791309603,
       "is_sellable_during_rent": false,
       "collection_name": "Party Sparklers",
       "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
@@ -559654,33 +559492,6 @@
       "price_per_day": "5000000",
       "discount_per_day": 0.0,
       "listed_at": 1792923756,
-      "is_sellable_during_rent": false,
-      "collection_name": "Party Sparklers",
-      "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
-    },
-    {
-      "nft_address": "EQChoyZcUTjkFyVb6csK5gCC0lFA8oPhjM0mYmKle0IcfQJ9",
-      "nft_name": "Party Sparkler #457",
-      "owner": "EQDvkO41B2cNshYz4k48OMoI1hbytQ_k48U5ncK3_IuF6yQ9",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Little Fairy"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Ivory White"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Scissors"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 15552000,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1792875077,
       "is_sellable_during_rent": false,
       "collection_name": "Party Sparklers",
       "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
@@ -564622,60 +564433,6 @@
       "price_per_day": "1000000000",
       "discount_per_day": 0.0,
       "listed_at": 1760124570,
-      "is_sellable_during_rent": false,
-      "collection_name": "Party Sparklers",
-      "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
-    },
-    {
-      "nft_address": "EQDsuT7qzxsEvilkax_M5EX7EpkLsoeg-Ytk7jfT_FIm3alr",
-      "nft_name": "Party Sparkler #82444",
-      "owner": "EQAI7G5QhSrk84_HRIkKdyJrzNIQocDPU454J72ftfeaIIb4",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Neon Pink"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Ivory White"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Plume"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 15552000,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1791057319,
-      "is_sellable_during_rent": false,
-      "collection_name": "Party Sparklers",
-      "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
-    },
-    {
-      "nft_address": "EQBuvcq6CVA_3UWqph71m1wM9DuJe4KpCzOTGITT_TIO0gXk",
-      "nft_name": "Party Sparkler #82739",
-      "owner": "EQDTU3ZQ9gbLNttO5yUVsT2aGs4QIkOHc-xJZEF6frYw6qoL",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Lady Serenity"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Ivory White"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Cupcake"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 2937600,
-      "price_per_day": "100000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1791785944,
       "is_sellable_during_rent": false,
       "collection_name": "Party Sparklers",
       "collection_address": "EQCa1I09fE9UoTV6awM6QC9-fkv51hoii24w1tJoFfigG_ax"
@@ -630021,33 +629778,6 @@
       "collection_address": "EQATuUGdvrjLvTWE5ppVFOVCqU2dlCLUnKTsu0n1JYm9la10"
     },
     {
-      "nft_address": "EQCYggl9VYW1lcnQJedaVCKbixNxKgKpEHlJiuvobsl7e-lI",
-      "nft_name": "Scared Cat #11422",
-      "owner": "EQCzm0JVK1eft2uvsbxAUJK20QvQWqSWYybpi7L9K70Zrw_g",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Bipolar Cat"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Sky Blue"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Fish Skeleton"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 15552000,
-      "price_per_day": "110000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793318420,
-      "is_sellable_during_rent": false,
-      "collection_name": "Scared Cats",
-      "collection_address": "EQATuUGdvrjLvTWE5ppVFOVCqU2dlCLUnKTsu0n1JYm9la10"
-    },
-    {
       "nft_address": "EQAzfCumu1iiFRSyAXt0LKG0VVcC_xZNQyAHtyJ0Gm4yUJ7s",
       "nft_name": "Scared Cat #11541",
       "owner": "EQDTU3ZQ9gbLNttO5yUVsT2aGs4QIkOHc-xJZEF6frYw6qoL",
@@ -635443,6 +635173,33 @@
       "price_per_day": "174000000",
       "discount_per_day": 0.1,
       "listed_at": 1793090130,
+      "is_sellable_during_rent": false,
+      "collection_name": "Scared Cats",
+      "collection_address": "EQATuUGdvrjLvTWE5ppVFOVCqU2dlCLUnKTsu0n1JYm9la10"
+    },
+    {
+      "nft_address": "EQA3Fe4BXch2BnKDWMdqWN08e7-PGJhfBdAtkLumVHh-o73p",
+      "nft_name": "Scared Cat #16961",
+      "owner": "EQCZqkkuTEhi09Aq_7NEW0kPBw-hhV3Dcr-ZxInxo_1lNM_H",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Creeper"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Raspberry"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Severed Hand"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "114000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353497,
       "is_sellable_during_rent": false,
       "collection_name": "Scared Cats",
       "collection_address": "EQATuUGdvrjLvTWE5ppVFOVCqU2dlCLUnKTsu0n1JYm9la10"
@@ -653020,33 +652777,6 @@
       "price_per_day": "50000000",
       "discount_per_day": 0.0,
       "listed_at": 1793268153,
-      "is_sellable_during_rent": false,
-      "collection_name": "Sky Stilettos",
-      "collection_address": "EQAkqbUwkuFy5sgkgXEGSr9WSxnbslVCc25Ri9BfAEIzXFU-"
-    },
-    {
-      "nft_address": "EQCsddBXKb0EUmu5CkcpD2cz_1yTXCzQmhHcb4MwRVxr2-iV",
-      "nft_name": "Sky Stilettos #19716",
-      "owner": "EQCFc68CxOrZ2YCwSdf1jjjLgtuLgT5SKQlelmGH5YxqL5N3",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Fortuna"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Feldgrau"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Cat Mask"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 2937600,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793347704,
       "is_sellable_during_rent": false,
       "collection_name": "Sky Stilettos",
       "collection_address": "EQAkqbUwkuFy5sgkgXEGSr9WSxnbslVCc25Ri9BfAEIzXFU-"
@@ -692904,33 +692634,6 @@
       "collection_address": "EQAoJw7BpOcBD3y9voMuEQ-qhS3K4gtM-6EePLxkzk8iSifX"
     },
     {
-      "nft_address": "EQD0sq3I5GwJQjDlVxHiX4Opo_MTE06Se_6RdamT1pA3nKCH",
-      "nft_name": "Snoop Dogg #189185",
-      "owner": "EQA_LJsRAwPClU7xkZdMFrvZ0RxUrOSCEqIw2Ifv-1kUjG6j",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Olympics"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Turquoise"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Straw Hat"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 15552000,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1791376932,
-      "is_sellable_during_rent": false,
-      "collection_name": "Snoop Doggs",
-      "collection_address": "EQAoJw7BpOcBD3y9voMuEQ-qhS3K4gtM-6EePLxkzk8iSifX"
-    },
-    {
       "nft_address": "EQBnnzTntRYGh9UTHtIk_VlMw1wD5G7bRIxfNuZx2G0VsUpp",
       "nft_name": "Snoop Dogg #191997",
       "owner": "EQDdc_enuiDVg3PZ_9Jw1FyGVIOvQrPufcUFDK-2-4wfeXfy",
@@ -717388,6 +717091,33 @@
       "price_per_day": "10000000",
       "discount_per_day": 0.1,
       "listed_at": 1791038412,
+      "is_sellable_during_rent": false,
+      "collection_name": "Snoop Doggs",
+      "collection_address": "EQAoJw7BpOcBD3y9voMuEQ-qhS3K4gtM-6EePLxkzk8iSifX"
+    },
+    {
+      "nft_address": "EQBqb2WwEC2TBiCG5Dbr1q0g6_lNHM1qjlXBrZMbmtwt6Wrl",
+      "nft_name": "Snoop Dogg #518065",
+      "owner": "EQD-DYz_d-1hwOylIvBa66SEJA8NUsy6UpwrzSczH-sXjCyv",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Purple Hoodie"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Battleship Grey"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Anchor"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2592000,
+      "price_per_day": "10000000",
+      "discount_per_day": 0.3,
+      "listed_at": 1793353527,
       "is_sellable_during_rent": false,
       "collection_name": "Snoop Doggs",
       "collection_address": "EQAoJw7BpOcBD3y9voMuEQ-qhS3K4gtM-6EePLxkzk8iSifX"
@@ -783921,6 +783651,33 @@
       "collection_address": "EQCgaTxb2wA_3Bi8Ec4FFNu8CauoHo0VPpnwxdrhAgOrOXvA"
     },
     {
+      "nft_address": "EQB9bzVW2qyLVvF8397tfVLbEH24pQPySymYdvDpCNedzwYc",
+      "nft_name": "Swag Bag #149998",
+      "owner": "EQDwgKk44q6VLG3o_VNgDStnMfJae-OuBtrUouJWcwcfRLgN",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Dogg Treats"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Black"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Arcane Mirror"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2592000,
+      "price_per_day": "29000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353635,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swag Bags",
+      "collection_address": "EQCgaTxb2wA_3Bi8Ec4FFNu8CauoHo0VPpnwxdrhAgOrOXvA"
+    },
+    {
       "nft_address": "EQATbEFPbYoVyKpeSoZxxaQCsbOrjXRwDgAgurFzMojj6mtv",
       "nft_name": "Swag Bag #150136",
       "owner": "EQCSMcTniyT4nkiyHBTXOsOtl9FDe736qIersEj_pbKyH7R8",
@@ -799743,6 +799500,33 @@
       "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
     },
     {
+      "nft_address": "EQClsGxTLRKEzLLmC0epm35RyNCeqpbfoETDtY8OYvRhU72b",
+      "nft_name": "Swiss Watch #16498",
+      "owner": "EQA7DVIrSImiksk6uz6Zdim3Vn_tfz27k-PzqVv_vDNW8eF4",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Ball Pit"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Satin Gold"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Cobra"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "70000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353649,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swiss Watches",
+      "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
+    },
+    {
       "nft_address": "EQC87OTdAYdXPequMy6oYNDK1oZ-W0QqUt06-a_-d8qGRJOE",
       "nft_name": "Swiss Watch #16503",
       "owner": "EQCqahUmA_5wVngh6eSiZxFVyZljhrKLwWrxNMaknxstAZov",
@@ -801039,6 +800823,33 @@
       "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
     },
     {
+      "nft_address": "EQB_103EEITLV-UyVcWr_NtITuEhcvj2gbyDI4CI0O39A5LF",
+      "nft_name": "Swiss Watch #22690",
+      "owner": "EQBqzAR-gdsTwwf_4Tl8sFIPZ_r1PRErWVaMRRtbskDkPyfh",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Zenith"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Sky Blue"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Anchor"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 15552000,
+      "price_per_day": "80000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353680,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swiss Watches",
+      "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
+    },
+    {
       "nft_address": "EQC9t_Fw01P-0XolbEifjDXQAh344waneEciF0uB4p2BF-Cv",
       "nft_name": "Swiss Watch #22744",
       "owner": "EQDTU3ZQ9gbLNttO5yUVsT2aGs4QIkOHc-xJZEF6frYw6qoL",
@@ -801358,6 +801169,33 @@
       "price_per_day": "500000000",
       "discount_per_day": 0.0,
       "listed_at": 1760307355,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swiss Watches",
+      "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
+    },
+    {
+      "nft_address": "EQBQfXD5CbN82esX5XTAqzcqsBoDmFyOmUkKqW_PWe0JYtZp",
+      "nft_name": "Swiss Watch #25302",
+      "owner": "EQD20cp1Kq1G9fEMgqfjUmEkTXM-ufVdykctrGOU1WGq0L-4",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Outer Space"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Black"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Sumerian Bird"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 11577600,
+      "price_per_day": "540000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353680,
       "is_sellable_during_rent": false,
       "collection_name": "Swiss Watches",
       "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
@@ -861897,33 +861735,6 @@
       "collection_address": "EQDc08YxzZWtlKAohSybNc3kXAkAPPtHch-jY_E6KMQ3b1mn"
     },
     {
-      "nft_address": "EQDB-4l8Sh4KVHpK69QAIhj_-vWq98hTSkGqjNpybaA0ahdF",
-      "nft_name": "Vice Cream #309948",
-      "owner": "EQDJ51n1XnjWriei9Jf9QdMZZhdJ_5augVB6zMtGWT-qNWgN",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Star Buddy"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Dark Green"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Sakura Flower"
-        }
-      ],
-      "min_duration": 259200,
-      "max_duration": 2937600,
-      "price_per_day": "3398900",
-      "discount_per_day": 0.0,
-      "listed_at": 1792172353,
-      "is_sellable_during_rent": false,
-      "collection_name": "Vice Creams",
-      "collection_address": "EQDc08YxzZWtlKAohSybNc3kXAkAPPtHch-jY_E6KMQ3b1mn"
-    },
-    {
       "nft_address": "EQARD8Su8BSWgupXM811yasq1-yS5mCMzYgUN0VYvixurhQT",
       "nft_name": "Vice Cream #310176",
       "owner": "EQBpUqPFArsOPp0RCa4YNFoFdqMQZEICN2-EoPjzQw0UO7A7",
@@ -921972,6 +921783,33 @@
       "collection_address": "EQACcQpR2fmdeENWdE2YGQWHVxSTyA8Zq4_k7rk_IaxCRXNe"
     },
     {
+      "nft_address": "EQB4VJVKPGdb9N8KHmYkigKhRmCp3EKcsCLr4Tnc2fH7gIym",
+      "nft_name": "Vintage Cigar #20421",
+      "owner": "EQDsqAh0XVphKqaF1TkpCbheEK44Iokls0Q6XOv-sRqnUQE-",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Purple Patron"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Coral Red"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Mask"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 15552000,
+      "price_per_day": "28990000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353527,
+      "is_sellable_during_rent": false,
+      "collection_name": "Vintage Cigars",
+      "collection_address": "EQACcQpR2fmdeENWdE2YGQWHVxSTyA8Zq4_k7rk_IaxCRXNe"
+    },
+    {
       "nft_address": "EQCVzPl89WzQJTzPsftdtl7wcII7mEkVXga0HPvfoZAG-GtM",
       "nft_name": "Vintage Cigar #21103",
       "owner": "EQAcUe_dKh-d_O3GeT9YpPUV-WrSV0R5hhXCe7wNvd5ZzO2A",
@@ -952018,6 +951856,33 @@
       "price_per_day": "500000000",
       "discount_per_day": 0.0,
       "listed_at": 1760350071,
+      "is_sellable_during_rent": false,
+      "collection_name": "Witch Hats",
+      "collection_address": "EQBD8aBKC4NsnYMqtkCfPQk2EVnieynJQp1UgZVyx1VmR5Ml"
+    },
+    {
+      "nft_address": "EQAXjHEtzd20vrgyyGPhrT0rgT800g1S_cGBuXq6GRHFbT81",
+      "nft_name": "Witch Hat #11690",
+      "owner": "EQCeBhrs2kudTOOQYBKT1JR_qI8Pi5BKowml_wh4bnUD-9iv",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Smoke Veil"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Aquamarine"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Voodoo Doll"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "10000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353680,
       "is_sellable_during_rent": false,
       "collection_name": "Witch Hats",
       "collection_address": "EQBD8aBKC4NsnYMqtkCfPQk2EVnieynJQp1UgZVyx1VmR5Ml"
