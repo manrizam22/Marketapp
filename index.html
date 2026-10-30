@@ -468,6 +468,57 @@
         grid-column: auto;
       }
     }
+
+    /* اصلاح ساختار کارت‌ها */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.traits {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 5px;
+    min-height: 58px;
+    max-height: 58px;
+    overflow: hidden;
+}
+
+.trait {
+    max-width: 100%;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ثابت نگه داشتن بخش اطلاعات */
+.card-info {
+    margin-top: auto;
+    min-height: 58px;
+    flex-shrink: 0;
+}
+
+/* تراز شدن دکمه‌ها */
+.rent-btn {
+    margin-top: 12px;
+    flex-shrink: 0;
+}
+
+/* ارتفاع یکسان تصاویر */
+.image-wrap {
+    flex-shrink: 0;
+}
   </style>
 </head>
 
@@ -909,7 +960,11 @@
 
                     <span class="collection-tag">${collection}</span>
 
-                    <div class="traits">
+                    <div class="traits" title="${escapeHtml(
+                        Object.entries(attributes)
+                            .map(([key, value]) => `${key}: ${value}`)
+                            .join(" | ")
+                    )}">
                         ${traits}
                     </div>
 
