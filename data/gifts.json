@@ -1,6 +1,6 @@
 {
-  "total": 35723,
-  "updated_at": 1793353868,
+  "total": 35719,
+  "updated_at": 1793354023,
   "gifts": [
     {
       "nft_address": "EQBqk6r_uX_5rK3Kd4dTNvzbhPqUKUrs4NeEIFIbiAq5fXrD",
@@ -35638,33 +35638,6 @@
       "price_per_day": "25000000",
       "discount_per_day": 0.0,
       "listed_at": 1793136388,
-      "is_sellable_during_rent": false,
-      "collection_name": "Big Years",
-      "collection_address": "EQDx-SqQEhP9Rzfi2cqdehTVUvQbArsUz1X7t-ul8IiKZpYb"
-    },
-    {
-      "nft_address": "EQAn0fccD0AhdG8DMNld7WTx4jmvwq7qZwknbgFzdEjDkIfo",
-      "nft_name": "Big Year #37051",
-      "owner": "EQDwgKk44q6VLG3o_VNgDStnMfJae-OuBtrUouJWcwcfRLgN",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Salvador Dali"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Black"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Banner"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 2592000,
-      "price_per_day": "21900000",
-      "discount_per_day": 0.0,
-      "listed_at": 1792627537,
       "is_sellable_during_rent": false,
       "collection_name": "Big Years",
       "collection_address": "EQDx-SqQEhP9Rzfi2cqdehTVUvQbArsUz1X7t-ul8IiKZpYb"
@@ -110919,33 +110892,6 @@
       "collection_address": "EQA0JBiVCjdgqkiHiYmIgTUBbZI6mNbnSymqf0HFC7FhxpuT"
     },
     {
-      "nft_address": "EQA7xpwoTsFAl6L3Ha2KJyUgPB3xBWrYHFlKa3oceQ17yU5f",
-      "nft_name": "Cupid Charm #22619",
-      "owner": "EQBymGR-yrtAAXNfZwjurm7sdAgc1ET54r0G0vitl2P_GU3J",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Starlight"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Khaki Green"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Tongue"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 2419200,
-      "price_per_day": "27000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793136128,
-      "is_sellable_during_rent": false,
-      "collection_name": "Cupid Charms",
-      "collection_address": "EQA0JBiVCjdgqkiHiYmIgTUBbZI6mNbnSymqf0HFC7FhxpuT"
-    },
-    {
       "nft_address": "EQA6D8z39V000_iYfP_9PasA_zbfH-kEKyEUg4GETE1L3KW6",
       "nft_name": "Cupid Charm #25226",
       "owner": "EQDtE7cdRFWFBv0gqhpvF9g6FpWu8tXpQ78hLgeqZuB01_Cp",
@@ -161890,33 +161836,6 @@
       "price_per_day": "15000000",
       "discount_per_day": 0.0,
       "listed_at": 1793097620,
-      "is_sellable_during_rent": false,
-      "collection_name": "Eternal Roses",
-      "collection_address": "EQDumy3bnZYzV4bSWMSSZkmXqx50XuH5d9RlX_yEi2FNlivk"
-    },
-    {
-      "nft_address": "EQCBBDznPVB7IZct5q4y5m1FWSttV6igJMy9iL479HMDgCXf",
-      "nft_name": "Eternal Rose #20342",
-      "owner": "EQBpKVEvJF5R5qEwk_7D8KYoBcQapHeCAiqtCPiNs5wsTB4E",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Pop Petal"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Amber"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Chocolate"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 7776000,
-      "price_per_day": "16900000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793145092,
       "is_sellable_during_rent": false,
       "collection_name": "Eternal Roses",
       "collection_address": "EQDumy3bnZYzV4bSWMSSZkmXqx50XuH5d9RlX_yEi2FNlivk"
@@ -314634,6 +314553,33 @@
       "collection_address": "EQBIj0uF-qIASqv6qIvcTif2wKSdt4WQc4mcoBywNp5GntuG"
     },
     {
+      "nft_address": "EQCOfsDylLgkeB80nX4l0tHjbYRhgfHohZ0Ea1g3xoL6_B4U",
+      "nft_name": "Instant Ramen #172986",
+      "owner": "EQD4-u7aeorT5ycH_NA1JIkJl-xoV8t7dOGb4jCdTBR56g-E",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Gold Chain"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Black"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Ghost"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "30000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353863,
+      "is_sellable_during_rent": false,
+      "collection_name": "Instant Ramens",
+      "collection_address": "EQBIj0uF-qIASqv6qIvcTif2wKSdt4WQc4mcoBywNp5GntuG"
+    },
+    {
       "nft_address": "EQCUnXjzlyZB7Lda2BRNKRFU-vI8-DFYfxD9oDmFXYQAi7YV",
       "nft_name": "Instant Ramen #173799",
       "owner": "EQCznC5wc0_FZhlm--mYTtwTSfZe9XIcF_D-jv0sCBni2IFL",
@@ -358072,33 +358018,6 @@
       "price_per_day": "19000000",
       "discount_per_day": 0.0,
       "listed_at": 1788751328,
-      "is_sellable_during_rent": false,
-      "collection_name": "Jelly Bunnies",
-      "collection_address": "EQAwzubeoJwnqmmBuTPpnUSurRzWPB8ERzcfzx55Z2YjE0jx"
-    },
-    {
-      "nft_address": "EQCZYo4IJx0EaNCfV9ELshciRZG0ZBY1bfa24C9XiTE5KfRc",
-      "nft_name": "Jelly Bunny #75889",
-      "owner": "EQAlBhF0ZmkY15_g56X_df1BX67HTzHjCyael7PsqSghAwZK",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Sir Wobbleton"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Mystic Pearl"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Ladybug"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 11577600,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1786877684,
       "is_sellable_during_rent": false,
       "collection_name": "Jelly Bunnies",
       "collection_address": "EQAwzubeoJwnqmmBuTPpnUSurRzWPB8ERzcfzx55Z2YjE0jx"
@@ -415582,33 +415501,6 @@
       "price_per_day": "54990000",
       "discount_per_day": 0.0,
       "listed_at": 1792682389,
-      "is_sellable_during_rent": false,
-      "collection_name": "Light Swords",
-      "collection_address": "EQDRrfw5pgIC4e6NafUAx52Z9Ym6q1k26xxaXR_qx0LKJJ7D"
-    },
-    {
-      "nft_address": "EQDU2GX5zNUaSk2l09MYnXU8vq5mMzE0jf52vpI9p4Hp05ip",
-      "nft_name": "Light Sword #47680",
-      "owner": "EQDs-ArfcaXfLDSrv_U8XP6rwF4tOn7QODNoIh95pIFUvym0",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Sensei"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Black"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Galaxy"
-        }
-      ],
-      "min_duration": 432000,
-      "max_duration": 15552000,
-      "price_per_day": "24000000",
-      "discount_per_day": 0.1,
-      "listed_at": 1793301195,
       "is_sellable_during_rent": false,
       "collection_name": "Light Swords",
       "collection_address": "EQDRrfw5pgIC4e6NafUAx52Z9Ym6q1k26xxaXR_qx0LKJJ7D"
@@ -543000,6 +542892,33 @@
       "collection_address": "EQC7oPa-gJDZ6JRwW0WW4WH_Vjn7ioKmfDdFItD7nYFGdbuU"
     },
     {
+      "nft_address": "EQAzm72MJu6BHlq1soIAYfpXIdMEE9KMQdRkGKGHm9YzqDb3",
+      "nft_name": "Moon Pendant #83358",
+      "owner": "EQDyM-3vg8QlhapJdFTI5qyiWWIh6wBekL_wKHP4HptMuWhH",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Calm Sunset"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Black"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Strawberry"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "35000000",
+      "discount_per_day": 0.1,
+      "listed_at": 1793353893,
+      "is_sellable_during_rent": false,
+      "collection_name": "Moon Pendants",
+      "collection_address": "EQC7oPa-gJDZ6JRwW0WW4WH_Vjn7ioKmfDdFItD7nYFGdbuU"
+    },
+    {
       "nft_address": "EQBQ5k-BTqxf8Q2fQbdpZHFHRZBtOxXboo_qZhBJV_yOxDeb",
       "nft_name": "Moon Pendant #84039",
       "owner": "EQCFc68CxOrZ2YCwSdf1jjjLgtuLgT5SKQlelmGH5YxqL5N3",
@@ -566166,33 +566085,6 @@
       "collection_address": "EQBBLRFtC_3PLxNpWX5nfchwapk7eWcG3dzKoxbV6cWzqROo"
     },
     {
-      "nft_address": "EQDFiD0wJz2NpAhaya3zBLEZTkALm01uniNqBc11bw8jMHCY",
-      "nft_name": "Pet Snake #10610",
-      "owner": "EQCVqojDatVOdx7e087kbLVdDyB1kw_KZ2tzddPvNHZq2utg",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Pink Bunny"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Onyx Black"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Bonsai"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 2937600,
-      "price_per_day": "20000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793139363,
-      "is_sellable_during_rent": false,
-      "collection_name": "Pet Snakes",
-      "collection_address": "EQBBLRFtC_3PLxNpWX5nfchwapk7eWcG3dzKoxbV6cWzqROo"
-    },
-    {
       "nft_address": "EQCStP0mts40T1EiBQXIDELwtwp19OGMNEIM5kn31gz5KrrO",
       "nft_name": "Pet Snake #106445",
       "owner": "EQAmL-cwsWVPb-kc1YmpNaQTZ1UmL1t7e-OfZ4fjOtjcnzSW",
@@ -571989,9 +571881,9 @@
         }
       ],
       "min_duration": 86400,
-      "max_duration": 2937600,
-      "price_per_day": "1490000000",
-      "discount_per_day": 0.1,
+      "max_duration": 15552000,
+      "price_per_day": "1289000000",
+      "discount_per_day": 0.0,
       "listed_at": 1793340462,
       "is_sellable_during_rent": false,
       "collection_name": "Plush Pepes",
@@ -640573,33 +640465,6 @@
       "price_per_day": "39300000",
       "discount_per_day": 0.0,
       "listed_at": 1791446222,
-      "is_sellable_during_rent": false,
-      "collection_name": "Sharp Tongues",
-      "collection_address": "EQBw2tO5UaJ4c_YXt3I8y5KD0k37staZxedV2O5HmryiK0dN"
-    },
-    {
-      "nft_address": "EQAmOnrXncjVXO9BMts4qB1bP9OrqgEt7fEdTVQp9BuvMKsF",
-      "nft_name": "Sharp Tongue #5570",
-      "owner": "EQACGttkevuIszAG_sf9L-KjCJjF2RtY2_JlQD22xxFIK07q",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Morticia"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Platinum"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Ball"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 11577600,
-      "price_per_day": "39000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793350758,
       "is_sellable_during_rent": false,
       "collection_name": "Sharp Tongues",
       "collection_address": "EQBw2tO5UaJ4c_YXt3I8y5KD0k37staZxedV2O5HmryiK0dN"
@@ -728517,6 +728382,33 @@
       "collection_address": "EQA8DCWyCWyywgOKYORerRoSVevWrUQ_FjKQgNihxY1227x7"
     },
     {
+      "nft_address": "EQAfzYyNL-3u4CjOS9nPhk8reeJKna4TYFlcjQAHPV3GQsBd",
+      "nft_name": "Spiced Wine #13729",
+      "owner": "EQAlBhF0ZmkY15_g56X_df1BX67HTzHjCyael7PsqSghAwZK",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Water Spout"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Electric Indigo"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Eggplant"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 11577600,
+      "price_per_day": "10000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353863,
+      "is_sellable_during_rent": false,
+      "collection_name": "Spiced Wines",
+      "collection_address": "EQA8DCWyCWyywgOKYORerRoSVevWrUQ_FjKQgNihxY1227x7"
+    },
+    {
       "nft_address": "EQDpmRkuKNO5ajjtMJ5TzdpaXV2YtyhR-m8BYcMJAyNQdpzY",
       "nft_name": "Spiced Wine #14549",
       "owner": "EQAlBhF0ZmkY15_g56X_df1BX67HTzHjCyael7PsqSghAwZK",
@@ -728593,6 +728485,33 @@
       "price_per_day": "5000000",
       "discount_per_day": 0.0,
       "listed_at": 1792736140,
+      "is_sellable_during_rent": false,
+      "collection_name": "Spiced Wines",
+      "collection_address": "EQA8DCWyCWyywgOKYORerRoSVevWrUQ_FjKQgNihxY1227x7"
+    },
+    {
+      "nft_address": "EQC41YdDs8pWDy7gV_hDK72pQnviyEEpZGhfWwf066YXitbo",
+      "nft_name": "Spiced Wine #1596",
+      "owner": "EQACGttkevuIszAG_sf9L-KjCJjF2RtY2_JlQD22xxFIK07q",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Gaso Green"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Black"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Pomegranate"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 11577600,
+      "price_per_day": "24400000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353863,
       "is_sellable_during_rent": false,
       "collection_name": "Spiced Wines",
       "collection_address": "EQA8DCWyCWyywgOKYORerRoSVevWrUQ_FjKQgNihxY1227x7"
@@ -799392,6 +799311,33 @@
       "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
     },
     {
+      "nft_address": "EQC8VRAnS0moYHowbOyap5-GxjknKYpWeP0kEmnaqWMl96ni",
+      "nft_name": "Swiss Watch #159",
+      "owner": "EQB0I11sUQj8fGvCgGhmLW1uA7oehkoCGlteEyuoxB6Vwc6w",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Platinum"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Sapphire"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Phoenix"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "100000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353862,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swiss Watches",
+      "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
+    },
+    {
       "nft_address": "EQAb9C0yNfyjPNgQZfEP8zkvHxBpkSBB2kU-2la0WvmHcuyf",
       "nft_name": "Swiss Watch #15914",
       "owner": "EQA6KdXNwNNMRF5gBG_ykNMz6duNf3F-A9kR0KH_-OV2B8eh",
@@ -869506,33 +869452,6 @@
       "price_per_day": "3299790",
       "discount_per_day": 0.0,
       "listed_at": 1791326783,
-      "is_sellable_during_rent": false,
-      "collection_name": "Vice Creams",
-      "collection_address": "EQDc08YxzZWtlKAohSybNc3kXAkAPPtHch-jY_E6KMQ3b1mn"
-    },
-    {
-      "nft_address": "EQCFsK7arimRIsG4TiX4q8-XQY9bao0f01G5U3n4jzmlHxvA",
-      "nft_name": "Vice Cream #385602",
-      "owner": "EQDJ51n1XnjWriei9Jf9QdMZZhdJ_5augVB6zMtGWT-qNWgN",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Vanilla"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Neon Blue"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Morgenstern"
-        }
-      ],
-      "min_duration": 259200,
-      "max_duration": 2937600,
-      "price_per_day": "3398900",
-      "discount_per_day": 0.0,
-      "listed_at": 1793335928,
       "is_sellable_during_rent": false,
       "collection_name": "Vice Creams",
       "collection_address": "EQDc08YxzZWtlKAohSybNc3kXAkAPPtHch-jY_E6KMQ3b1mn"
@@ -950452,33 +950371,6 @@
       "price_per_day": "20000000",
       "discount_per_day": 0.0,
       "listed_at": 1790711306,
-      "is_sellable_during_rent": false,
-      "collection_name": "Winter Wreaths",
-      "collection_address": "EQC8WVW9DSN4PPfFlCW2AHJkXxBUHBFsvnhXiYqSTpD7tXsp"
-    },
-    {
-      "nft_address": "EQAHPzbfQtooaa_EZrYN4YIr81Whh7gRtXxDlBrSt2hxbq0q",
-      "nft_name": "Winter Wreath #44485",
-      "owner": "EQAt-H1JOtGBahAVhtiRY5ozvOKGcK5Wg0eLElaK2jQjqEiZ",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Celebration"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Cyberpunk"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Pineapple"
-        }
-      ],
-      "min_duration": 345600,
-      "max_duration": 15552000,
-      "price_per_day": "3000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793350264,
       "is_sellable_during_rent": false,
       "collection_name": "Winter Wreaths",
       "collection_address": "EQC8WVW9DSN4PPfFlCW2AHJkXxBUHBFsvnhXiYqSTpD7tXsp"
