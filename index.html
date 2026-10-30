@@ -51,8 +51,6 @@
             margin: auto;
         }
 
-        /* Header */
-
         header {
             padding: 25px 0 20px;
         }
@@ -111,8 +109,6 @@
             border-color: var(--primary);
         }
 
-        /* Hero */
-
         .hero {
             margin-top: 25px;
             padding: 30px;
@@ -131,8 +127,6 @@
             margin: 0;
             font-size: 14px;
         }
-
-        /* Statistics */
 
         .stats {
             gap: 12px;
@@ -379,6 +373,17 @@
             filter: brightness(1.15);
         }
 
+        /* مخفی‌سازی ظاهری ویژگی‌ها و نام کالکشن
+           اطلاعات آن‌ها حذف نمی‌شود و بعداً قابل فعال‌سازی است. */
+
+        .traits,
+        .trait,
+        .collection-tag,
+        .gift-collection,
+        .gift-traits {
+            display: none !important;
+        }
+
         /* Empty / Loading / Error */
 
         .empty,
@@ -393,14 +398,17 @@
             border-radius: 16px;
         }
 
+        .error p {
+            line-height: 1.9;
+            font-size: 13px;
+        }
+
         /* Infinite Scroll */
 
         .scroll-sentinel {
             height: 1px;
             width: 100%;
         }
-
-        /* Footer */
 
         footer {
             border-top: 1px solid var(--border);
@@ -410,15 +418,11 @@
             font-size: 11px;
         }
 
-        /* Tablet */
-
         @media (max-width: 950px) {
             .grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
-
-        /* Mobile */
 
         @media (max-width: 650px) {
             .container {
@@ -527,7 +531,7 @@
 
                 <p>
                     مجموعه‌ای از گیفت‌های تلگرام را مشاهده کن،
-                    ویژگی‌های آن‌ها را بررسی کن و برای اجاره پیام بده.
+                    گیفت مورد نظرت را انتخاب کن و برای اجاره پیام بده.
                 </p>
 
                 <div class="stats">
@@ -714,6 +718,9 @@
             return "کمتر از یک ساعت";
         }
 
+        /* استخراج ویژگی‌ها حفظ شده است.
+           برای فعال‌سازی مجدد نمایش ویژگی‌ها در آینده از این تابع استفاده کن. */
+
         function getAttributes(gift) {
             const result = {};
 
@@ -739,7 +746,6 @@
             return match ? Number(match[1]) : null;
         }
 
-        // ساخت slug برای تصویر
         function getGiftSlug(gift) {
             const match = String(gift.nft_name || "").match(/^(.*?)\s*#(\d+)/);
 
@@ -750,7 +756,6 @@
             return base ? `${base}-${match[2]}` : null;
         }
 
-        // آدرس‌های احتمالی تصویر گیفت
         function getImageCandidates(gift) {
             const list = [
                 gift.image,
@@ -781,7 +786,6 @@
 
             if (raw === null) return null;
 
-            // قیمت API بر حسب نانو TON است.
             return raw / 1000000000;
         }
 
@@ -846,9 +850,15 @@
             sortGifts();
 
             visibleCount = 0;
+            isRendering = false;
             elements.grid.innerHTML = "";
 
+            updateCounters();
             renderGifts();
+
+            // فعال‌سازی مجدد observer برای بارگذاری نتایج جدید
+            observer.unobserve(elements.sentinel);
+            observer.observe(elements.sentinel);
         }
 
         function sortGifts() {
@@ -1011,7 +1021,24 @@
 
         function renderGifts() {
             if (isRendering) return;
-            if (visibleCount >= filteredGifts.length) return;
+
+            // مدیریت حالت بدون نتیجه
+            if (filteredGifts.length === 0) {
+                elements.grid.innerHTML = `
+                    <div class="empty">
+                        <strong>گیفتی پیدا نشد!</strong>
+                        <p>عبارت جست‌وجو یا فیلتر کالکشن را تغییر بده.</p>
+                    </div>
+                `;
+
+                visibleCount = 0;
+                elements.showing.textContent = "بدون نتیجه";
+                return;
+            }
+
+            if (visibleCount >= filteredGifts.length) {
+                return;
+            }
 
             isRendering = true;
 
@@ -1084,7 +1111,7 @@
                 applyFilters();
 
             } catch (error) {
-                console.error(error);
+                console.error("Data loading error:", error);
 
                 elements.grid.innerHTML = `
                     <div class="error">
@@ -1092,7 +1119,7 @@
                         <p>${escapeHtml(error.message)}</p>
                         <p>
                             مطمئن شو فایل‌های data/gifts.json و
-                            data/collections.json وجود دارند.
+                            data/collections.json وجود دارند و در دسترس هستند.
                         </p>
                     </div>
                 `;
