@@ -938,13 +938,14 @@
 
       const collection = escapeHtml(gift.collection_name || "بدون مجموعه");
 
+      /* 
       const traits = Object.entries(attributes)
         .map(([key, value]) => `
                 <span class="trait">
                     ${escapeHtml(key)}: ${escapeHtml(value)}
                 </span>
             `).join("");
-
+      */
       const price = getPrice(gift);
       const priceText = price === null
         ? "نامشخص"
@@ -993,6 +994,7 @@
 
                     <span class="collection-tag">${collection}</span>
 
+                  <!--
                     <div class="traits" title="${escapeHtml(
                         Object.entries(attributes)
                             .map(([key, value]) => `${key}: ${value}`)
@@ -1000,6 +1002,7 @@
                     )}">
                         ${traits}
                     </div>
+                  -->
 
                     <div class="card-info">
                         <div>
