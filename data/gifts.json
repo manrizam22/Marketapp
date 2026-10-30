@@ -1,6 +1,6 @@
 {
-  "total": 35722,
-  "updated_at": 1793353706,
+  "total": 35723,
+  "updated_at": 1793353868,
   "gifts": [
     {
       "nft_address": "EQBqk6r_uX_5rK3Kd4dTNvzbhPqUKUrs4NeEIFIbiAq5fXrD",
@@ -132028,6 +132028,33 @@
       "price_per_day": "240000000",
       "discount_per_day": 0.0,
       "listed_at": 1791782475,
+      "is_sellable_during_rent": false,
+      "collection_name": "Durov’s Caps",
+      "collection_address": "EQD9ikZq6xPgKjzmdBG0G0S80RvUJjbwgHrPZXDKc_wsE84w"
+    },
+    {
+      "nft_address": "EQAWdq5dYvFRNcrsPXf8OEfNdEV0PYGs0uGZJ3pseQ5Xe7eK",
+      "nft_name": "Durov’s Cap #2532",
+      "owner": "EQD-nFFEneVqlz2Yuimvdq3YKklbMXqD9FN9PWb1Xj3P-Psj",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Frosthorn"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Light Olive"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Fehu Rune"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "210000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353649,
       "is_sellable_during_rent": false,
       "collection_name": "Durov’s Caps",
       "collection_address": "EQD9ikZq6xPgKjzmdBG0G0S80RvUJjbwgHrPZXDKc_wsE84w"
@@ -332743,7 +332770,7 @@
       ],
       "min_duration": 86400,
       "max_duration": 2937600,
-      "price_per_day": "30000000",
+      "price_per_day": "25000000",
       "discount_per_day": 0.0,
       "listed_at": 1793272788,
       "is_sellable_during_rent": false,
@@ -424708,33 +424735,6 @@
       "price_per_day": "3200000",
       "discount_per_day": 0.0,
       "listed_at": 1792529401,
-      "is_sellable_during_rent": false,
-      "collection_name": "Lol Pops",
-      "collection_address": "EQC6zjid8vJNEWqcXk10XjsdDLRKbcPZzbHusuEW6FokOWIm"
-    },
-    {
-      "nft_address": "EQAc41HzGn0ryrKYkzWXeNyJpP23l6GyZio24WziCOh2LfnL",
-      "nft_name": "Lol Pop #184464",
-      "owner": "EQDatY0lofvhoTF6oRxRI9gcJ9XGSDxjLnNLRLCiUPN73Q01",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Iced Latte"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Pacific Green"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Crystal Ball"
-        }
-      ],
-      "min_duration": 345600,
-      "max_duration": 518400,
-      "price_per_day": "3200000",
-      "discount_per_day": 0.0,
-      "listed_at": 1792467254,
       "is_sellable_during_rent": false,
       "collection_name": "Lol Pops",
       "collection_address": "EQC6zjid8vJNEWqcXk10XjsdDLRKbcPZzbHusuEW6FokOWIm"
@@ -652053,33 +652053,6 @@
       "collection_address": "EQBaOL8mH5YywkXjkps65X1OLPNH7pns4YcfLmaVpFaoNKZn"
     },
     {
-      "nft_address": "EQDXk9jnEvSXbSswZPPwcaFZCvLPrhc_pU6rb73--wnqrPwC",
-      "nft_name": "Skull Flower #9924",
-      "owner": "EQBR2TCOUqpmKG55nQHl4s8Bg8T6JJsSG6dcYkO4IxySpInG",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Graffiti"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Chocolate"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Lollipop"
-        }
-      ],
-      "min_duration": 172800,
-      "max_duration": 15465600,
-      "price_per_day": "7490000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793303585,
-      "is_sellable_during_rent": false,
-      "collection_name": "Skull Flowers",
-      "collection_address": "EQBaOL8mH5YywkXjkps65X1OLPNH7pns4YcfLmaVpFaoNKZn"
-    },
-    {
       "nft_address": "EQDnsecFkQIplBlU4_BActc_M6NCORnfBqaKJ-gJPcogYNYb",
       "nft_name": "Sky Stilettos #11158",
       "owner": "EQCFc68CxOrZ2YCwSdf1jjjLgtuLgT5SKQlelmGH5YxqL5N3",
@@ -785460,33 +785433,6 @@
       "collection_address": "EQCgaTxb2wA_3Bi8Ec4FFNu8CauoHo0VPpnwxdrhAgOrOXvA"
     },
     {
-      "nft_address": "EQAZYd-8Q2gifC7RS3yLvwn4b_77Q-Rh1XrpTNPDkBAus2YO",
-      "nft_name": "Swag Bag #173240",
-      "owner": "EQD6eu_6PWAO45Se9bFJJZxxOfZbvw7QIRjCpCoTtPer-Tau",
-      "attributes": [
-        {
-          "trait_type": "Model",
-          "value": "Spicy Onion"
-        },
-        {
-          "trait_type": "Backdrop",
-          "value": "Raspberry"
-        },
-        {
-          "trait_type": "Symbol",
-          "value": "Heraldic Lily"
-        }
-      ],
-      "min_duration": 86400,
-      "max_duration": 2937600,
-      "price_per_day": "10000000",
-      "discount_per_day": 0.0,
-      "listed_at": 1793352226,
-      "is_sellable_during_rent": false,
-      "collection_name": "Swag Bags",
-      "collection_address": "EQCgaTxb2wA_3Bi8Ec4FFNu8CauoHo0VPpnwxdrhAgOrOXvA"
-    },
-    {
       "nft_address": "EQC8ic6PJ9jHGAs_1yZ3EfUmLU4omFk0-EllAHy02nOeohIB",
       "nft_name": "Swag Bag #173928",
       "owner": "EQBIluf-By2AY0iVsAz6leSDpJKwRP9RiYdQHFNMRxaFP6Ku",
@@ -799203,6 +799149,33 @@
       "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
     },
     {
+      "nft_address": "EQDsat3lSjAS6G4ZvKApozBUXQALAAL5gRJ78p8cOvPtTQTu",
+      "nft_name": "Swiss Watch #15364",
+      "owner": "EQACGttkevuIszAG_sf9L-KjCJjF2RtY2_JlQD22xxFIK07q",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Diamond Ring"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Sapphire"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Rhino Warrior"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 11577600,
+      "price_per_day": "64400000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353710,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swiss Watches",
+      "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
+    },
+    {
       "nft_address": "EQDFQ-iRGlZtPHFLTfN9c7PzEyf3M-j_qK8aNCAVDcZQuvER",
       "nft_name": "Swiss Watch #15371",
       "owner": "EQACGttkevuIszAG_sf9L-KjCJjF2RtY2_JlQD22xxFIK07q",
@@ -799873,6 +799846,33 @@
       "price_per_day": "500000000",
       "discount_per_day": 0.0,
       "listed_at": 1793275489,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swiss Watches",
+      "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
+    },
+    {
+      "nft_address": "EQD_X_8_rqVjv-hWhbxymTHB3hY9_zzdtoGea36Tqg4KuwPr",
+      "nft_name": "Swiss Watch #18499",
+      "owner": "EQDTU3ZQ9gbLNttO5yUVsT2aGs4QIkOHc-xJZEF6frYw6qoL",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Patriot"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Platinum"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Dolphin"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 2937600,
+      "price_per_day": "200000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353832,
       "is_sellable_during_rent": false,
       "collection_name": "Swiss Watches",
       "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
@@ -803059,6 +803059,33 @@
       "price_per_day": "400000000",
       "discount_per_day": 0.0,
       "listed_at": 1792495944,
+      "is_sellable_during_rent": false,
+      "collection_name": "Swiss Watches",
+      "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
+    },
+    {
+      "nft_address": "EQAU5oITX_cwCZbU1xvNygK0IwCh61xJRdbJKZvCaqRBWlf7",
+      "nft_name": "Swiss Watch #9974",
+      "owner": "EQACGttkevuIszAG_sf9L-KjCJjF2RtY2_JlQD22xxFIK07q",
+      "attributes": [
+        {
+          "trait_type": "Model",
+          "value": "Full Tint"
+        },
+        {
+          "trait_type": "Backdrop",
+          "value": "Sapphire"
+        },
+        {
+          "trait_type": "Symbol",
+          "value": "Celtic Wolf"
+        }
+      ],
+      "min_duration": 86400,
+      "max_duration": 11577600,
+      "price_per_day": "64000000",
+      "discount_per_day": 0.0,
+      "listed_at": 1793353771,
       "is_sellable_during_rent": false,
       "collection_name": "Swiss Watches",
       "collection_address": "EQBI07PXew94YQz7GwN72nPNGF6htSTOJkuU4Kx_bjTZv32U"
