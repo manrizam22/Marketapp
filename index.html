@@ -305,20 +305,33 @@
     }
 
     .traits {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-top: 10px;
-      min-height: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 5px;
+    
+        height: 58px;
+        min-height: 58px;
+        max-height: 58px;
+    
+        overflow: hidden;
+        flex-shrink: 0;
     }
-
+    
     .trait {
-      background: #a78bfa13;
-      color: #c4b5fd;
-      border: 1px solid #a78bfa25;
-      padding: 3px 7px;
-      border-radius: 7px;
-      font-size: 10px;
+        display: inline-flex;
+        align-items: center;
+    
+        max-width: 100%;
+        min-width: 0;
+    
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    
+        padding: 3px 7px;
+        line-height: 16px;
+        flex-shrink: 1;
     }
 
     .card-info {
