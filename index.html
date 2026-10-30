@@ -1,218 +1,1077 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>اجاره گیفت</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #dfeaf5;
-    --card: #ffffff;
-    --ink: #0f2a43;
-    --muted: #5d7288;
-    --line: #c5d5e5;
-    --accent: #ff5c7a;
-    --accent-ink: #ffffff;
-    --tile: #eef4fa;
-  }
-  @media (prefers-color-scheme: dark) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Gifts | فروشگاه گیفت تلگرام</title>
+  <meta name="description" content="مشاهده و اجاره گیفت‌های تلگرام">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
     :root {
-      --bg: #101c2b;
-      --card: #172638;
-      --ink: #e8f0f8;
-      --muted: #8fa6bd;
-      --line: #263b52;
-      --accent: #ff6f8a;
-      --accent-ink: #1a0b10;
-      --tile: #1d3047;
+      --bg: #0c0b14;
+      --surface: #151421;
+      --surface2: #201d30;
+      --border: #302b43;
+      --text: #f4f1ff;
+      --muted: #9b97b1;
+      --primary: #a78bfa;
+      --green: #34d399;
     }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Vazirmatn", system-ui, sans-serif;
-    line-height: 1.6;
-  }
-  header {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 28px 20px 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 24px;
-    align-items: center;
-    justify-content: space-between;
-  }
-  h1 { margin: 0; font-size: 1.7rem; font-weight: 800; }
-  .sub { color: var(--muted); font-size: .92rem; margin: 2px 0 0; }
-  input[type="search"] {
-    font: inherit;
-    color: var(--ink);
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 10px 14px;
-    min-width: 240px;
-  }
-  input[type="search"]:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-  main { max-width: 1180px; margin: 0 auto; padding: 12px 20px 60px; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: 16px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .tile {
-    aspect-ratio: 1;
-    background: var(--tile);
-    display: grid;
-    place-items: center;
-    padding: 14px;
-  }
-  .tile img { width: 100%; height: 100%; object-fit: contain; }
-  .tile .noimg { color: var(--muted); font-size: .8rem; }
-  .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-  .name { font-weight: 600; font-size: .98rem; direction: ltr; text-align: right; overflow-wrap: anywhere; }
-  .traits { color: var(--muted); font-size: .8rem; direction: ltr; text-align: right; }
-  .row { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 8px; gap: 8px; }
-  .price { font-weight: 800; font-size: 1.05rem; }
-  .price small { font-weight: 400; color: var(--muted); }
-  .rent {
-    font: inherit;
-    font-weight: 600;
-    background: var(--accent);
-    color: var(--accent-ink);
-    border: 0;
-    border-radius: 10px;
-    padding: 7px 14px;
-    cursor: pointer;
-  }
-  .more { display: block; margin: 28px auto 0; font: inherit; font-weight: 600; padding: 11px 28px;
-    border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
-  .more[disabled] { opacity: .5; cursor: default; }
-  .msg { text-align: center; color: var(--muted); padding: 60px 0; }
-  .msg.err { color: var(--accent); }
-</style>
-</head>
-<body>
-<header>
-  <div>
-    <h1>اجاره گیفت</h1>
-    <p class="sub" id="count">در حال بارگذاری…</p>
-  </div>
-  <input type="search" id="q" placeholder="جستجوی نام یا مشخصات گیفت" aria-label="جستجو">
-</header>
 
-<main>
-  <div id="msg" class="msg" hidden></div>
-  <div class="grid" id="grid"></div>
-  <button class="more" id="more" hidden>نمایش بیشتر</button>
-</main>
-
-<script>
-  const grid = document.getElementById("grid");
-  const msg = document.getElementById("msg");
-  const moreBtn = document.getElementById("more");
-  const countEl = document.getElementById("count");
-  const searchEl = document.getElementById("q");
-
-  const PAGE = 48;
-  let all = [];        // همه‌ی گیفت‌ها از data/gifts.json
-  let visible = PAGE;  // چندتا نشون داده بشه
-  let loading = true;
-
-  function esc(s) {
-    return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  }
-
-  // اگه اولین تصویر لود نشد، میره سراغ بعدی؛ اگه هیچ‌کدوم نشد، متن «بدون تصویر»
-  function nextImage(img) {
-    const list = JSON.parse(img.dataset.srcs);
-    const i = Number(img.dataset.i) + 1;
-    if (i < list.length) {
-      img.dataset.i = i;
-      img.src = list[i];
-    } else {
-      img.replaceWith(Object.assign(document.createElement("span"), { className: "noimg", textContent: "بدون تصویر" }));
+    * {
+      box-sizing: border-box;
     }
-  }
 
-  function card(item) {
-    const srcs = item.images || [];
-    const media = srcs.length
-      ? `<img src="${esc(srcs[0])}" alt="${esc(item.name)}" loading="lazy" data-i="0"
-              data-srcs='${esc(JSON.stringify(srcs))}' onerror="nextImage(this)">`
-      : `<span class="noimg">بدون تصویر</span>`;
-    const traits = Object.entries(item.attributes || {}).slice(0, 3)
-      .map(([k, v]) => `${k}: ${v}`).join(" | ");
-    const price = item.price != null ? `${esc(item.price)} <small>TON</small>` : `<small>قیمت نامشخص</small>`;
-    return `<article class="card">
-      <div class="tile">${media}</div>
-      <div class="body">
-        <div class="name">${esc(item.name)}</div>
-        <div class="traits">${esc(traits)}</div>
-        <div class="row">
-          <div class="price">${price}</div>
-          <button class="rent" data-id="${esc(item.id)}">اجاره</button>
-        </div>
-      </div>
-    </article>`;
-  }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% -10%, #33205a 0, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Vazirmatn, sans-serif;
+    }
 
-  function render() {
-    const q = searchEl.value.trim().toLowerCase();
-    const matched = !q ? all : all.filter(i =>
-      (i.name + " " + Object.values(i.attributes || {}).join(" ")).toLowerCase().includes(q));
-    grid.innerHTML = matched.slice(0, visible).map(card).join("");
-    countEl.textContent = `${matched.length} گیفت قابل اجاره`;
-    msg.hidden = matched.length > 0 || loading;
-    if (!matched.length && !loading) { msg.className = "msg"; msg.textContent = "گیفتی پیدا نشد."; }
-    moreBtn.hidden = matched.length <= visible;
-  }
+    button,
+    input,
+    select {
+      font: inherit;
+    }
 
-  async function load() {
-    try {
-      const res = await fetch("data/gifts.json?t=" + Date.now());
-      if (!res.ok) throw new Error("فایل data/gifts.json پیدا نشد. اول Action رو یه بار اجرا کن.");
-      const data = await res.json();
-      all = data.items || [];
-      if (data.updated_at) {
-        const d = new Date(data.updated_at);
-        document.querySelector(".sub").dataset.updated = d.toLocaleString("fa-IR");
+    .container {
+      width: min(1250px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    header {
+      padding: 25px 0 20px;
+    }
+
+    .topbar,
+    .brand,
+    .stats,
+    .results-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar {
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
+      font-size: 24px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .brand p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: white;
+      background: #222034;
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .hero {
+      margin-top: 25px;
+      padding: 30px;
+      border-radius: 22px;
+      border: 1px solid #ffffff12;
+      background: linear-gradient(120deg, #211a38, #171525 65%, #211b35);
+    }
+
+    .hero h2 {
+      margin: 0 0 10px;
+      font-size: clamp(23px, 4vw, 34px);
+    }
+
+    .hero p {
+      color: #b8b2d0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .stats {
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 23px;
+    }
+
+    .stat {
+      background: #ffffff0b;
+      border: 1px solid #ffffff12;
+      border-radius: 12px;
+      padding: 10px 16px;
+      min-width: 130px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 17px;
+    }
+
+    .toolbar {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field {
+      min-width: 0;
+    }
+
+    .field label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .control {
+      width: 100%;
+      height: 46px;
+      border: 1px solid var(--border);
+      outline: none;
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 0 13px;
+    }
+
+    .control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px #a78bfa18;
+    }
+
+    .control::placeholder {
+      color: #77728d;
+    }
+
+    select.control {
+      cursor: pointer;
+    }
+
+    .results-bar {
+      justify-content: space-between;
+      gap: 12px;
+      margin: 25px 0 15px;
+      flex-wrap: wrap;
+    }
+
+    .results-bar strong {
+      font-size: 16px;
+    }
+
+    .results-bar span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .card {
+      min-width: 0;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      transition: .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #8b5cf6aa;
+      box-shadow: 0 12px 35px #0004;
+    }
+
+    .image-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: linear-gradient(145deg, #28243c, #171523);
+      display: grid;
+      place-items: center;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: #77728d;
+      font-size: 12px;
+    }
+
+    /* تصویر / استیکر گیفت */
+    .image-wrap img.gift-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+      z-index: 1;
+      transition: transform .25s;
+    }
+
+    .card:hover .gift-img {
+      transform: scale(1.06);
+    }
+
+    .gift-number {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 2;
+      background: #0c0b14df;
+      border: 1px solid #ffffff20;
+      padding: 4px 9px;
+      border-radius: 8px;
+      font-size: 10px;
+      direction: ltr;
+    }
+
+    .card-body {
+      padding: 13px;
+    }
+
+    .gift-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .collection-tag {
+      display: inline-block;
+      margin-top: 9px;
+      padding: 4px 8px;
+      border-radius: 7px;
+      background: #34d39912;
+      color: #6ee7b7;
+      border: 1px solid #34d39925;
+      font-size: 10px;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+      min-height: 25px;
+    }
+
+    .trait {
+      background: #a78bfa13;
+      color: #c4b5fd;
+      border: 1px solid #a78bfa25;
+      padding: 3px 7px;
+      border-radius: 7px;
+      font-size: 10px;
+    }
+
+    .card-info {
+      margin-top: 13px;
+      padding-top: 11px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .price-label,
+    .duration {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .price-value {
+      margin-top: 3px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--green);
+      direction: ltr;
+      text-align: right;
+    }
+
+    .duration {
+      text-align: left;
+    }
+
+    .rent-btn {
+      width: 100%;
+      margin-top: 12px;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 10px;
+      color: white;
+      font-weight: 700;
+      font-size: 12px;
+      background: linear-gradient(120deg, #8b5cf6, #6d28d9);
+    }
+
+    .rent-btn:hover {
+      filter: brightness(1.15);
+    }
+
+    .load-more-wrap {
+      text-align: center;
+      padding: 25px 0 45px;
+    }
+
+    .load-more {
+      border: 1px solid #a78bfa66;
+      background: #a78bfa16;
+      color: #c4b5fd;
+      border-radius: 12px;
+      padding: 12px 35px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .load-more[hidden] {
+      display: none;
+    }
+
+    .empty,
+    .loading,
+    .error {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 55px 15px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    @media(max-width: 950px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
-    } catch (e) {
-      msg.className = "msg err";
-      msg.textContent = e.message;
-      msg.hidden = false;
-    } finally {
-      loading = false;
-      render();
-      const u = document.querySelector(".sub").dataset.updated;
-      if (u && all.length) countEl.textContent += ` · آخرین بروزرسانی: ${u}`;
     }
-  }
 
-  grid.addEventListener("click", e => {
-    const btn = e.target.closest(".rent");
-    if (!btn) return;
-    // اینجا مسیر پرداخت/اجاره‌ی خودت رو وصل کن (مثلاً rent_nft در API مارکت‌اپ)
-    alert("شناسه گیفت: " + btn.dataset.id);
-  });
-  searchEl.addEventListener("input", () => { visible = PAGE; render(); });
-  moreBtn.addEventListener("click", () => { visible += PAGE; render(); });
-  load();
-</script>
+    @media(max-width: 650px) {
+      .container {
+        width: min(100% - 22px, 500px);
+      }
+
+      .hero {
+        padding: 23px 18px;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-field {
+        grid-column: 1 / -1;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .card-body {
+        padding: 10px;
+      }
+
+      .gift-name {
+        font-size: 12px;
+      }
+
+      .trait {
+        font-size: 9px;
+      }
+
+      .price-value {
+        font-size: 11px;
+      }
+
+      .duration {
+        font-size: 9px;
+      }
+    }
+
+    @media(max-width: 360px) {
+      .grid {
+        gap: 8px;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .search-field {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-icon">🎁</div>
+          <div>
+            <h1>Telegram Gifts</h1>
+            <p>فروشگاه اجاره گیفت تلگرام</p>
+          </div>
+        </div>
+
+        <a class="contact-link" href="https://t.me/Show_me_0" target="_blank" rel="noopener">
+          ارتباط با پشتیبانی ↗
+        </a>
+      </div>
+
+      <section class="hero">
+        <h2>گیفت مورد علاقه‌ات رو پیدا کن!</h2>
+        <p>
+          مجموعه‌ای از گیفت‌های تلگرام را مشاهده کن،
+          ویژگی‌های آن‌ها را بررسی کن و برای اجاره پیام بده.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <span>تعداد کل گیفت‌ها</span>
+            <strong id="totalCount">۰</strong>
+          </div>
+
+          <div class="stat">
+            <span>نتایج جست‌وجو</span>
+            <strong id="resultCount">۰</strong>
+          </div>
+
+          <div class="stat">
+            <span>تعداد مجموعه‌ها</span>
+            <strong id="collectionCount">۰</strong>
+          </div>
+
+          <div class="stat">
+            <span>آخرین بروزرسانی</span>
+            <strong id="updateTime" style="font-size:12px">---</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar">
+
+        <div class="field search-field">
+          <label for="searchInput">جست‌وجوی گیفت</label>
+          <input id="searchInput" class="control" type="search" placeholder="نام یا شماره گیفت..." autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="sortSelect">مرتب‌سازی</label>
+          <select id="sortSelect" class="control">
+            <option value="newest">جدیدترین</option>
+            <option value="oldest">قدیمی‌ترین</option>
+            <option value="price-asc">ارزان‌ترین اجاره</option>
+            <option value="price-desc">گران‌ترین اجاره</option>
+            <option value="duration-asc">کمترین مدت اجاره</option>
+            <option value="duration-desc">بیشترین مدت اجاره</option>
+            <option value="number-asc">شماره صعودی</option>
+            <option value="number-desc">شماره نزولی</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="collectionFilter">دسته‌بندی / کالکشن</label>
+          <select id="collectionFilter" class="control">
+            <option value="">همه کالکشن‌ها</option>
+          </select>
+        </div>
+
+      </section>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="results-bar">
+      <strong>گیفت‌ها</strong>
+      <span id="showingText">در حال دریافت اطلاعات...</span>
+    </div>
+
+    <section class="grid" id="giftGrid">
+      <div class="loading">در حال دریافت گیفت‌ها...</div>
+    </section>
+
+  </main>
+
+  <footer>
+    Telegram Gifts Marketplace · تمامی حقوق محفوظ است
+  </footer>
+
+  <script>
+    const GIFTS_URL = "./data/gifts.json";
+    const COLLECTIONS_URL = "./data/collections.json";
+
+    const TELEGRAM_USERNAME = "Show_me_0";
+    const PAGE_SIZE = 24;
+
+    let allGifts = [];
+    let filteredGifts = [];
+    let visibleCount = 0;
+
+    const $ = id => document.getElementById(id);
+
+    const elements = {
+      grid: $("giftGrid"),
+      search: $("searchInput"),
+      sort: $("sortSelect"),
+      collection: $("collectionFilter"),
+      total: $("totalCount"),
+      result: $("resultCount"),
+      collectionCount: $("collectionCount"),
+      update: $("updateTime"),
+      showing: $("showingText"),
+    };
+
+    function normalizeText(value) {
+      return String(value ?? "")
+        .toLowerCase()
+        .replace(/ي/g, "ی")
+        .replace(/ك/g, "ک")
+        .replace(/\u200c/g, " ")
+        .trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[char]);
+    }
+
+    function toNumber(value) {
+      if (value === null || value === undefined || value === "") {
+        return null;
+      }
+
+      const number = Number(value);
+      return Number.isFinite(number) ? number : null;
+    }
+
+    function formatNumber(value, digits = 2) {
+      const number = toNumber(value);
+
+      if (number === null) return "نامشخص";
+
+      return new Intl.NumberFormat("en-US", {
+        maximumFractionDigits: digits
+      }).format(number);
+    }
+
+    function formatDate(timestamp) {
+      const value = Number(timestamp);
+
+      if (!Number.isFinite(value) || value <= 0) return "---";
+
+      return new Date(value * 1000).toLocaleDateString("fa-IR");
+    }
+
+    function formatDuration(seconds) {
+      const value = Number(seconds);
+
+      if (!Number.isFinite(value) || value <= 0) {
+        return "نامشخص";
+      }
+
+      const days = Math.floor(value / 86400);
+
+      if (days >= 1) {
+        return `${days.toLocaleString("fa-IR")} روز`;
+      }
+
+      const hours = Math.floor(value / 3600);
+
+      if (hours >= 1) {
+        return `${hours.toLocaleString("fa-IR")} ساعت`;
+      }
+
+      return "کمتر از یک ساعت";
+    }
+
+    function getAttributes(gift) {
+      const result = {};
+
+      if (!Array.isArray(gift.attributes)) return result;
+
+      gift.attributes.forEach(attribute => {
+        if (!attribute || !attribute.trait_type) return;
+
+        result[attribute.trait_type] = attribute.value;
+      });
+
+      return result;
+    }
+
+    function getGiftNumber(gift) {
+      const name = String(gift.nft_name || "");
+      const match = name.match(/#(\d+)/);
+
+      return match ? Number(match[1]) : null;
+    }
+
+    // ساخت slug برای تصویر؛ مثال: "Plush Pepe #1234" -> "plushpepe-1234"
+    function getGiftSlug(gift) {
+      const match = String(gift.nft_name || "").match(/^(.*?)\s*#(\d+)/);
+
+      if (!match) return null;
+
+      const base = match[1].toLowerCase().replace(/[^a-z0-9]/g, "");
+
+      return base ? `${base}-${match[2]}` : null;
+    }
+
+    // لیست آدرس‌های ممکن برای تصویر گیفت (به ترتیب اولویت)
+    function getImageCandidates(gift) {
+      const list = [
+        gift.image,
+        gift.image_url,
+        gift.thumbnail,
+        gift.preview,
+        gift.nft_image,
+        gift.metadata && gift.metadata.image
+      ].filter(url => typeof url === "string" && /^https?:\/\//.test(url));
+
+      const slug = getGiftSlug(gift);
+
+      if (slug) {
+        list.push(
+          `https://nft.fragment.com/gift/${slug}.medium.jpg`,
+          `https://nft.fragment.com/gift/${slug}.webp`
+        );
+      }
+
+      return list;
+    }
+
+    function getPrice(gift) {
+      const raw = toNumber(gift.price_per_day);
+
+      if (raw === null) return null;
+
+      // قیمت API بر حسب نانو TON است.
+      return raw / 1000000000;
+    }
+
+    function getSearchText(gift) {
+      const attributes = getAttributes(gift);
+
+      return normalizeText([
+        gift.nft_name,
+        gift.nft_address,
+        gift.collection_name,
+        gift.collection_address,
+        ...Object.entries(attributes).flat()
+      ].join(" "));
+    }
+
+    function fillCollections(collections) {
+      const select = elements.collection;
+
+      select.innerHTML = "";
+
+      const first = document.createElement("option");
+      first.value = "";
+      first.textContent = "همه کالکشن‌ها";
+      select.appendChild(first);
+
+      collections
+        .slice()
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .forEach(collection => {
+          const option = document.createElement("option");
+
+          option.value = collection.address;
+          option.textContent = collection.name;
+
+          select.appendChild(option);
+        });
+    }
+
+    function applyFilters() {
+      const query = normalizeText(elements.search.value);
+      const collectionAddress = elements.collection.value;
+
+      filteredGifts = allGifts.filter(gift => {
+        if (query && !getSearchText(gift).includes(query)) {
+          return false;
+        }
+
+        if (
+          collectionAddress &&
+          gift.collection_address !== collectionAddress
+        ) {
+          return false;
+        }
+
+        return true;
+      });
+
+      sortGifts();
+
+      visibleCount = 0;
+      renderGifts();
+    }
+
+    function sortGifts() {
+      const mode = elements.sort.value;
+
+      const compare = (a, b, key, direction = "asc") => {
+        const first = toNumber(a[key]);
+        const second = toNumber(b[key]);
+
+        if (first === null && second === null) return 0;
+        if (first === null) return 1;
+        if (second === null) return -1;
+
+        return direction === "asc"
+          ? first - second
+          : second - first;
+      };
+
+      switch (mode) {
+        case "newest":
+          filteredGifts.sort((a, b) =>
+            compare(a, b, "listed_at", "desc"));
+          break;
+
+        case "oldest":
+          filteredGifts.sort((a, b) =>
+            compare(a, b, "listed_at", "asc"));
+          break;
+
+        case "price-asc":
+          filteredGifts.sort((a, b) =>
+            compare(a, b, "price_per_day", "asc"));
+          break;
+
+        case "price-desc":
+          filteredGifts.sort((a, b) =>
+            compare(a, b, "price_per_day", "desc"));
+          break;
+
+        case "duration-asc":
+          filteredGifts.sort((a, b) =>
+            compare(a, b, "max_duration", "asc"));
+          break;
+
+        case "duration-desc":
+          filteredGifts.sort((a, b) =>
+            compare(a, b, "max_duration", "desc"));
+          break;
+
+        case "number-asc":
+          filteredGifts.sort((a, b) =>
+            (getGiftNumber(a) ?? Infinity) -
+            (getGiftNumber(b) ?? Infinity));
+          break;
+
+        case "number-desc":
+          filteredGifts.sort((a, b) =>
+            (getGiftNumber(b) ?? -Infinity) -
+            (getGiftNumber(a) ?? -Infinity));
+          break;
+      }
+    }
+
+    function createCard(gift) {
+      const name = escapeHtml(gift.nft_name || "Gift");
+      const number = getGiftNumber(gift);
+      const attributes = getAttributes(gift);
+
+      const collection = escapeHtml(gift.collection_name || "بدون مجموعه");
+
+      const traits = Object.entries(attributes)
+        .map(([key, value]) => `
+                <span class="trait">
+                    ${escapeHtml(key)}: ${escapeHtml(value)}
+                </span>
+            `).join("");
+
+      const price = getPrice(gift);
+      const priceText = price === null
+        ? "نامشخص"
+        : `${formatNumber(price)} TON`;
+
+      const duration = formatDuration(gift.max_duration);
+
+      const images = getImageCandidates(gift);
+
+      const imageHtml = images.length
+        ? `<img class="gift-img"
+                    src="${escapeHtml(images[0])}"
+                    data-fallbacks="${escapeHtml(JSON.stringify(images.slice(1)))}"
+                    alt="${name}"
+                    loading="lazy"
+                    decoding="async"
+                    referrerpolicy="no-referrer">`
+        : "";
+
+      const rentMessage =
+        `سلام، می‌خواهم گیفت ${gift.nft_name || "Gift"} را اجاره کنم.\n` +
+        `شناسه گیفت: ${gift.nft_address || ""}\n` +
+        `کالکشن: ${gift.collection_name || ""}`;
+
+      const telegramUrl =
+        `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(rentMessage)}`;
+
+      return `
+            <article class="card">
+                <div class="image-wrap">
+                    <div class="image-placeholder">
+                        تصویر گیفت
+                    </div>
+
+                    ${imageHtml}
+
+                    ${number !== null
+          ? `<span class="gift-number">#${number}</span>`
+          : ""}
+                </div>
+
+                <div class="card-body">
+                    <h3 class="gift-name" title="${name}">
+                        ${name}
+                    </h3>
+
+                    <span class="collection-tag">${collection}</span>
+
+                    <div class="traits">
+                        ${traits}
+                    </div>
+
+                    <div class="card-info">
+                        <div>
+                            <div class="price-label">قیمت اجاره روزانه</div>
+                            <div class="price-value">${priceText}</div>
+                        </div>
+
+                        <div class="duration">
+                            حداکثر مدت اجاره
+                            <br>
+                            ${escapeHtml(duration)}
+                        </div>
+                    </div>
+
+                    <a class="rent-btn"
+                       href="${telegramUrl}"
+                       target="_blank"
+                       rel="noopener">
+                        درخواست اجاره
+                    </a>
+                </div>
+            </article>
+        `;
+    }
+
+    function renderGifts() {
+      elements.total.textContent =
+        allGifts.length.toLocaleString("fa-IR");
+
+      elements.result.textContent =
+        filteredGifts.length.toLocaleString("fa-IR");
+
+      if (filteredGifts.length === 0) {
+        elements.grid.innerHTML = `
+                <div class="empty">
+                    <strong>گیفتی پیدا نشد!</strong>
+                    <p>عبارت جست‌وجو یا کالکشن را تغییر بده.</p>
+                </div>
+            `;
+
+        elements.showing.textContent = "بدون نتیجه";
+        return;
+      }
+
+      const nextItems = filteredGifts.slice(
+        visibleCount,
+        visibleCount + PAGE_SIZE
+      );
+
+      if (visibleCount === 0) {
+        elements.grid.innerHTML = "";
+      }
+
+      elements.grid.insertAdjacentHTML(
+        "beforeend",
+        nextItems.map(createCard).join("")
+      );
+
+      visibleCount += nextItems.length;
+
+      elements.showing.textContent =
+        `${visibleCount.toLocaleString("fa-IR")} از ` +
+        `${filteredGifts.length.toLocaleString("fa-IR")} گیفت`;
+    }
+
+    async function loadData() {
+      try {
+        const [giftsResponse, collectionsResponse] = await Promise.all([
+          fetch(`${GIFTS_URL}?v=${Date.now()}`, { cache: "no-store" }),
+          fetch(`${COLLECTIONS_URL}?v=${Date.now()}`, { cache: "no-store" })
+        ]);
+
+        if (!giftsResponse.ok) {
+          throw new Error(`خطای دریافت گیفت‌ها: HTTP ${giftsResponse.status}`);
+        }
+
+        if (!collectionsResponse.ok) {
+          throw new Error(`خطای دریافت کالکشن‌ها: HTTP ${collectionsResponse.status}`);
+        }
+
+        const giftsData = await giftsResponse.json();
+        const collectionsData = await collectionsResponse.json();
+
+        if (!Array.isArray(giftsData.gifts)) {
+          throw new Error("آرایه gifts در gifts.json پیدا نشد.");
+        }
+
+        if (!Array.isArray(collectionsData.collections)) {
+          throw new Error("آرایه collections در collections.json پیدا نشد.");
+        }
+
+        allGifts = giftsData.gifts;
+
+        fillCollections(collectionsData.collections);
+
+        elements.collectionCount.textContent =
+          collectionsData.collections.length.toLocaleString("fa-IR");
+
+        elements.update.textContent =
+          formatDate(giftsData.updated_at);
+
+        applyFilters();
+
+      } catch (error) {
+        console.error(error);
+
+        elements.grid.innerHTML = `
+                <div class="error">
+                    <strong>دریافت اطلاعات با مشکل مواجه شد.</strong>
+                    <p>${escapeHtml(error.message)}</p>
+                    <p>مطمئن شو فایل‌های data/gifts.json و data/collections.json وجود دارند.</p>
+                </div>
+            `;
+
+        elements.showing.textContent = "خطا در دریافت اطلاعات";
+      }
+    }
+
+    elements.search.addEventListener("input", applyFilters);
+    elements.sort.addEventListener("change", applyFilters);
+    elements.collection.addEventListener("change", applyFilters);
+
+    // اگر تصویر لود نشد، آدرس بعدی را امتحان می‌کند و در آخر تصویر را حذف می‌کند
+    elements.grid.addEventListener("error", event => {
+      const img = event.target;
+
+      if (!(img instanceof HTMLImageElement) || !img.classList.contains("gift-img")) return;
+
+      let fallbacks = [];
+
+      try {
+        fallbacks = JSON.parse(img.dataset.fallbacks || "[]");
+      } catch { }
+
+      if (fallbacks.length) {
+        img.dataset.fallbacks = JSON.stringify(fallbacks.slice(1));
+        img.src = fallbacks[0];
+      } else {
+        img.remove();
+      }
+    }, true);
+
+    // بارگذاری خودکار گیفت‌ها هنگام نزدیک شدن به انتهای صفحه
+    window.addEventListener("scroll", () => {
+      if (visibleCount >= filteredGifts.length) return;
+
+      const scrollPosition =
+        window.innerHeight + window.scrollY;
+
+      const pageHeight =
+        document.documentElement.scrollHeight;
+
+      // وقتی 600 پیکسل تا انتهای صفحه باقی مانده باشد
+      if (scrollPosition >= pageHeight - 600) {
+        renderGifts();
+      }
+    }, { passive: true });
+    loadData();
+  </script>
+
 </body>
+
 </html>
