@@ -206,9 +206,10 @@
     }
 
     .grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 17px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 17px;
+        align-items: stretch;
     }
 
     .card {
@@ -469,56 +470,75 @@
       }
     }
 
-    /* اصلاح ساختار کارت‌ها */
-.card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-width: 0;
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-}
-
-.traits {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    gap: 5px;
-    min-height: 58px;
-    max-height: 58px;
-    overflow: hidden;
-}
-
-.trait {
-    max-width: 100%;
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* ثابت نگه داشتن بخش اطلاعات */
-.card-info {
-    margin-top: auto;
-    min-height: 58px;
-    flex-shrink: 0;
-}
-
-/* تراز شدن دکمه‌ها */
-.rent-btn {
-    margin-top: 12px;
-    flex-shrink: 0;
-}
-
-/* ارتفاع یکسان تصاویر */
-.image-wrap {
-    flex-shrink: 0;
-}
+      .card {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-width: 0;
+          overflow: hidden;
+      }
+      
+      .image-wrap {
+          flex: 0 0 auto;
+          aspect-ratio: 1 / 1;
+      }
+      
+      .card-body {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+      }
+      
+      .gift-name {
+          height: 21px;
+          line-height: 21px;
+          flex-shrink: 0;
+      }
+      
+      .collection-tag {
+          height: 25px;
+          line-height: 15px;
+          flex-shrink: 0;
+      }
+      
+      .traits {
+          height: 58px;
+          min-height: 58px;
+          max-height: 58px;
+          overflow: hidden;
+      
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          gap: 5px;
+      
+          flex-shrink: 0;
+      }
+      
+      .trait {
+          max-width: 100%;
+          min-width: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex-shrink: 0;
+      }
+      
+      .card-info {
+          margin-top: auto;
+          min-height: 58px;
+          flex-shrink: 0;
+      }
+      
+      .rent-btn {
+          margin-top: 12px;
+          flex-shrink: 0;
+      }
+      
+      .card:hover {
+          transform: translateY(-4px);
+      }
   </style>
 </head>
 
