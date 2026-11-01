@@ -337,13 +337,6 @@
       color: var(--green);
     }
 
-    .price-ton {
-      font-size: 10px;
-      color: var(--muted);
-      direction: ltr;
-      text-align: right;
-    }
-
     .duration { text-align: left; }
 
     .card-actions {
@@ -495,7 +488,6 @@
     }
 
     .modal-price strong { color: var(--green); font-size: 17px; }
-    .modal-price small { color: var(--muted); direction: ltr; }
 
     .modal-meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
 
@@ -665,7 +657,6 @@
           <div class="price-label">قیمت اجاره روزانه</div>
           <strong id="modalPrice"></strong>
         </div>
-        <small id="modalPriceTon"></small>
       </div>
 
       <div class="modal-meta" id="modalDuration"></div>
@@ -731,7 +722,6 @@
       modalCollection: $("modalCollection"),
       modalTraits: $("modalTraits"),
       modalPrice: $("modalPrice"),
-      modalPriceTon: $("modalPriceTon"),
       modalDuration: $("modalDuration"),
       modalTgLink: $("modalTgLink"),
       modalRentLink: $("modalRentLink"),
@@ -862,11 +852,6 @@
     function formatToman(value) {
       if (value === null) return "نامشخص";
       return `${value.toLocaleString("fa-IR")} تومان`;
-    }
-
-    function formatTon(ton) {
-      if (ton === null) return "";
-      return `${ton.toLocaleString("en-US", { maximumFractionDigits: 3 })} TON`;
     }
 
     /* ===================== ارتباط با API ===================== */
@@ -1144,7 +1129,6 @@
         .map(([k, v]) => `<span class="trait">${escapeHtml(k)}: ${escapeHtml(v)}</span>`)
         .join("");
 
-      const ton = getPriceTon(gift);
       const toman = getPriceToman(gift);
 
       const images = getImageCandidates(gift);
@@ -1174,7 +1158,6 @@
               <div>
                 <div class="price-label">اجاره روزانه</div>
                 <div class="price-value">${formatToman(toman)}</div>
-                <div class="price-ton">${formatTon(ton)}</div>
               </div>
               <div class="duration">
                 حداکثر مدت اجاره<br>${escapeHtml(formatDuration(gift.max_duration))}
@@ -1354,7 +1337,6 @@
         .join("");
 
       el.modalPrice.textContent = formatToman(getPriceToman(gift));
-      el.modalPriceTon.textContent = formatTon(getPriceTon(gift));
       el.modalDuration.textContent = `حداکثر مدت اجاره: ${formatDuration(gift.max_duration)}`;
 
       el.modalTgLink.href = getTelegramUrl(gift);
