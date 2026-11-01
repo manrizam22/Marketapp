@@ -48,7 +48,7 @@
 
     header { padding: 25px 0 20px; }
 
-    .topbar, .brand, .stats, .results-bar {
+    .topbar, .brand, .results-bar {
       display: flex;
       align-items: center;
     }
@@ -83,50 +83,6 @@
       padding: 10px 16px;
       border-radius: 12px;
       font-size: 13px;
-    }
-
-    .hero {
-      margin-top: 25px;
-      padding: 30px;
-      border-radius: 22px;
-      border: 1px solid #ffffff12;
-      background: linear-gradient(120deg, #211a38, #171525 65%, #211b35);
-    }
-
-    .hero h2 { margin: 0 0 10px; font-size: clamp(23px, 4vw, 34px); }
-
-    .hero p { color: #b8b2d0; margin: 0; font-size: 14px; }
-
-    .stats { gap: 12px; flex-wrap: wrap; margin-top: 23px; }
-
-    .stat {
-      background: #ffffff0b;
-      border: 1px solid #ffffff12;
-      border-radius: 12px;
-      padding: 10px 16px;
-      min-width: 130px;
-    }
-
-    .stat span { display: block; color: var(--muted); font-size: 11px; }
-
-    .stat strong { display: block; margin-top: 4px; font-size: 17px; }
-
-    .live-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      margin-left: 6px;
-      box-shadow: 0 0 0 0 #34d39988;
-      animation: pulse 1.8s infinite;
-    }
-
-    .live-dot.off { background: #ef4444; animation: none; }
-
-    @keyframes pulse {
-      70% { box-shadow: 0 0 0 8px #34d39900; }
-      100% { box-shadow: 0 0 0 0 #34d39900; }
     }
 
     .toolbar {
@@ -524,7 +480,6 @@
 
     @media(max-width: 650px) {
       .container { width: min(100% - 22px, 500px); }
-      .hero { padding: 23px 18px; }
       .toolbar { grid-template-columns: 1fr 1fr; }
       .search-field { grid-column: 1 / -1; }
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -558,39 +513,10 @@
           </div>
         </div>
 
-        <a class="contact-link" href="https://t.me/Show_me_0" target="_blank" rel="noopener">
+        <a class="contact-link" href="https://t.me/Mr_Rentify" target="_blank" rel="noopener">
           ارتباط با پشتیبانی ↗
         </a>
       </div>
-
-      <section class="hero">
-        <h2>گیفت مورد علاقه‌ات رو پیدا کن!</h2>
-        <p>
-          لیست گیفت‌ها به‌صورت زنده بروزرسانی می‌شود؛ هر گیفت جدید بلافاصله در بالای لیست ظاهر می‌شود.
-        </p>
-
-        <div class="stats">
-          <div class="stat">
-            <span>تعداد کل گیفت‌ها</span>
-            <strong id="totalCount">۰</strong>
-          </div>
-
-          <div class="stat">
-            <span>نتایج جست‌وجو</span>
-            <strong id="resultCount">۰</strong>
-          </div>
-
-          <div class="stat">
-            <span>تعداد مجموعه‌ها</span>
-            <strong id="collectionCount">۰</strong>
-          </div>
-
-          <div class="stat">
-            <span><i class="live-dot" id="liveDot"></i>آخرین بروزرسانی</span>
-            <strong id="updateTime" style="font-size:12px">---</strong>
-          </div>
-        </div>
-      </section>
 
       <section class="toolbar">
 
@@ -675,23 +601,22 @@
   <script>
     /* ===================== تنظیمات ===================== */
     const CONFIG = {
-      // آدرس Worker خودت را اینجا بگذار
       API_BASE: "https://gifts-proxy.marketappgiftreza.workers.dev",
-      
-      TON_TO_TOMAN: 600000,       // هر تون = ۶۰۰ هزار تومان
-      LIMIT: 100,                 // تعداد گیفت در هر درخواست
-      MAX_PAGES: 300,             // سقف ایمنی صفحه‌بندی
 
-      FAST_POLL_MS: 8000,         // چک سریع صفحه اول برای گیفت جدید
-      FULL_SYNC_MS: 60000,        // همگام‌سازی کامل (حذف اجاره‌شده‌ها و ...)
-      NEW_BADGE_MS: 120000,       // مدت نمایش برچسب «جدید»
+      TON_TO_TOMAN: 600000,
+      LIMIT: 100,
+      MAX_PAGES: 300,
+
+      FAST_POLL_MS: 8000,
+      FULL_SYNC_MS: 60000,
+      NEW_BADGE_MS: 120000,
 
       PAGE_SIZE: 24,
-      TELEGRAM_USERNAME: "Show_me_0",
+      TELEGRAM_USERNAME: "Mr_Rentify",
     };
 
     /* ===================== وضعیت ===================== */
-    let giftMap = new Map();      // nft_address -> gift
+    let giftMap = new Map();
     let collections = [];
     let collectionByAddress = new Map();
     let collectionByKey = new Map();
@@ -699,8 +624,10 @@
     let filteredGifts = [];
     let visibleCount = 0;
     let syncing = false;
-    let lastUpdate = 0;
     let lottieInstance = null;
+
+    // ذخیره آدرس تصاویر در حافظه (خارج از DOM) برای غیرقابل رهگیری بودن
+    const imageSources = new Map(); // nft_address -> [urls]
 
     const $ = id => document.getElementById(id);
 
@@ -709,12 +636,7 @@
       search: $("searchInput"),
       sort: $("sortSelect"),
       collection: $("collectionFilter"),
-      total: $("totalCount"),
-      result: $("resultCount"),
-      collectionCount: $("collectionCount"),
-      update: $("updateTime"),
       showing: $("showingText"),
-      liveDot: $("liveDot"),
       toast: $("toast"),
       modal: $("giftModal"),
       modalStage: $("modalStage"),
@@ -747,11 +669,6 @@
       if (value === null || value === undefined || value === "") return null;
       const number = Number(value);
       return Number.isFinite(number) ? number : null;
-    }
-
-    function formatDate(timestampMs) {
-      if (!timestampMs) return "---";
-      return new Date(timestampMs).toLocaleTimeString("fa-IR");
     }
 
     function formatDuration(seconds) {
@@ -788,7 +705,6 @@
       return match ? match[1].trim() : String(gift.nft_name || "").trim();
     }
 
-    // "Chill Flame #310522" -> "ChillFlame-310522" (فرمت لینک t.me/nft/...)
     function getTelegramSlug(gift) {
       const match = String(gift.nft_name || "").match(/^(.*?)\s*#(\d+)/);
       if (!match) return null;
@@ -802,7 +718,6 @@
       return slug ? `https://t.me/nft/${slug}` : "https://t.me/";
     }
 
-    // slug فرگمنت (حروف کوچک)
     function getFragmentSlug(gift) {
       const slug = getTelegramSlug(gift);
       return slug ? slug.toLowerCase() : null;
@@ -838,7 +753,6 @@
     }
 
     /* ===================== قیمت (تومان) ===================== */
-    // قیمت API بر حسب نانوتون است
     function getPriceTon(gift) {
       const raw = toNumber(gift.price_per_day);
       return raw === null ? null : raw / 1e9;
@@ -907,8 +821,6 @@
     }
 
     /* ===================== کالکشن‌ها ===================== */
-    // کلید نرمال برای تطبیق نام تکی گیفت با نام جمع کالکشن
-    // "Jelly Bunnies" و "Jelly Bunny" هر دو -> "jellybunny"
     function nameKey(name) {
       return String(name || "")
         .toLowerCase()
@@ -926,7 +838,6 @@
       collectionByKey = new Map(collections.map(c => [nameKey(c.name), c]));
 
       fillCollectionSelect();
-      el.collectionCount.textContent = collections.length.toLocaleString("fa-IR");
     }
 
     function fillCollectionSelect() {
@@ -975,17 +886,6 @@
     }
 
     /* ===================== همگام‌سازی ===================== */
-    function setLive(ok) {
-      el.liveDot.classList.toggle("off", !ok);
-    }
-
-    function touchUpdate() {
-      lastUpdate = Date.now();
-      el.update.textContent = formatDate(lastUpdate);
-      setLive(true);
-    }
-
-    // همگام‌سازی کامل: همه صفحات را می‌گیرد
     async function fullSync(initial = false) {
       if (syncing) return;
       syncing = true;
@@ -1003,14 +903,12 @@
           records.forEach(gift => {
             if (!gift || !gift.nft_address) return;
             const old = giftMap.get(gift.nft_address);
-            // در بارگذاری اولیه هیچ گیفتی «جدید» حساب نمی‌شود
             fresh.set(
               gift.nft_address,
               prepareGift(gift, old, !initial && !old)
             );
           });
 
-          // نمایش تدریجی در بارگذاری اولیه
           if (initial) {
             giftMap = new Map(fresh);
             refresh();
@@ -1031,19 +929,14 @@
         if (initial || addedCount || removedCount) refresh();
 
         if (!initial && addedCount) showToast(`${addedCount.toLocaleString("fa-IR")} گیفت جدید اضافه شد`);
-
-        touchUpdate();
       } catch (error) {
         console.error("fullSync:", error);
-        setLive(false);
-
         if (initial && giftMap.size === 0) showError(error);
       } finally {
         syncing = false;
       }
     }
 
-    // چک سریع: فقط صفحه اول؛ هر چیز جدید را اضافه می‌کند
     async function fastPoll() {
       if (syncing || document.hidden || giftMap.size === 0) return;
 
@@ -1063,11 +956,8 @@
           refresh();
           showToast(`${added.toLocaleString("fa-IR")} گیفت جدید اضافه شد`);
         }
-
-        touchUpdate();
       } catch (error) {
         console.error("fastPoll:", error);
-        setLive(false);
       }
     }
 
@@ -1110,7 +1000,6 @@
 
       filteredGifts.sort(sorters[mode] || sorters.newest);
 
-      // در حالت «جدیدترین»، گیفت‌های تازه‌اضافه‌شده همیشه بالا بمانند
       if (mode === "newest") {
         const now = Date.now();
         filteredGifts.sort((a, b) =>
@@ -1131,12 +1020,13 @@
 
       const toman = getPriceToman(gift);
 
+      // آدرس تصاویر فقط در حافظه ذخیره می‌شوند، در HTML نوشته نمی‌شوند
       const images = getImageCandidates(gift);
+      if (images.length) imageSources.set(gift.nft_address, images);
 
       const imageHtml = images.length
         ? `<img class="gift-img"
-                src="${escapeHtml(images[0])}"
-                data-fallbacks="${escapeHtml(JSON.stringify(images.slice(1)))}"
+                data-gift="${escapeHtml(gift.nft_address)}"
                 alt="${name}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`
         : "";
 
@@ -1174,6 +1064,18 @@
         </article>`;
     }
 
+    // تصاویر را بعد از رندر DOM به صورت پویا ست می‌کند (آدرس‌ها در HTML نیستند)
+    function hydrateImages(root = document) {
+      root.querySelectorAll("img.gift-img[data-gift]").forEach(img => {
+        if (img.getAttribute("src")) return;
+        const urls = imageSources.get(img.dataset.gift);
+        if (urls && urls.length) {
+          img.dataset.idx = "0";
+          img.setAttribute("src", urls[0]);
+        }
+      });
+    }
+
     function getRentUrl(gift) {
       const message =
         `سلام، می‌خواهم گیفت ${gift.nft_name || "Gift"} را اجاره کنم.\n` +
@@ -1183,21 +1085,13 @@
       return `https://t.me/${CONFIG.TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`;
     }
 
-    function updateStats() {
-      el.total.textContent = giftMap.size.toLocaleString("fa-IR");
-      el.result.textContent = filteredGifts.length.toLocaleString("fa-IR");
-    }
-
     function updateShowingText() {
       el.showing.textContent = filteredGifts.length
         ? `${visibleCount.toLocaleString("fa-IR")} از ${filteredGifts.length.toLocaleString("fa-IR")} گیفت`
         : "بدون نتیجه";
     }
 
-    // رندر مجدد کل لیست با حفظ تعداد نمایش‌داده‌شده
     function renderGifts(count) {
-      updateStats();
-
       if (filteredGifts.length === 0) {
         el.grid.innerHTML = `
           <div class="empty">
@@ -1212,6 +1106,7 @@
       const target = Math.min(Math.max(count, CONFIG.PAGE_SIZE), filteredGifts.length);
       el.grid.innerHTML = filteredGifts.slice(0, target).map(createCard).join("");
       visibleCount = target;
+      hydrateImages(el.grid);
       updateShowingText();
     }
 
@@ -1221,16 +1116,15 @@
       const next = filteredGifts.slice(visibleCount, visibleCount + CONFIG.PAGE_SIZE);
       el.grid.insertAdjacentHTML("beforeend", next.map(createCard).join(""));
       visibleCount += next.length;
+      hydrateImages(el.grid);
       updateShowingText();
     }
 
-    // اعمال فیلتر + رندر با حفظ جایگاه اسکرول
     function refresh() {
       applyFilters();
       renderGifts(visibleCount || CONFIG.PAGE_SIZE);
     }
 
-    // وقتی کاربر فیلتر را عوض می‌کند، از اول رندر می‌شود
     function refreshFromStart() {
       applyFilters();
       renderGifts(CONFIG.PAGE_SIZE);
@@ -1264,19 +1158,29 @@
     }
 
     function showStaticImage(gift) {
-      const images = getImageCandidates(gift);
-      el.modalStage.innerHTML = images.length
-        ? `<img src="${escapeHtml(images[0])}" alt="${escapeHtml(gift.nft_name)}"
-                referrerpolicy="no-referrer">`
-        : `<span class="stage-msg">پیش‌نمایش در دسترس نیست</span>`;
+      // برای مودال هم آدرس‌ها از حافظه خوانده می‌شوند
+      const images = imageSources.get(gift.nft_address) || getImageCandidates(gift);
+
+      if (!images.length) {
+        el.modalStage.innerHTML = `<span class="stage-msg">پیش‌نمایش در دسترس نیست</span>`;
+        return;
+      }
+
+      el.modalStage.innerHTML = `<img alt="${escapeHtml(gift.nft_name || "")}" referrerpolicy="no-referrer">`;
 
       const img = el.modalStage.querySelector("img");
-      if (img && images.length > 1) {
-        let index = 1;
-        img.addEventListener("error", () => {
-          if (index < images.length) img.src = images[index++];
-        });
-      }
+      let index = 0;
+      const tryNext = () => {
+        if (index >= images.length) {
+          img.remove();
+          el.modalStage.innerHTML = `<span class="stage-msg">پیش‌نمایش در دسترس نیست</span>`;
+          return;
+        }
+        img.setAttribute("src", images[index++]);
+      };
+
+      img.addEventListener("error", tryNext);
+      tryNext();
     }
 
     function playAnimation(gift) {
@@ -1376,23 +1280,22 @@
       if (event.key === "Escape") closeModal();
     });
 
-    // اگر تصویر لود نشد، آدرس بعدی را امتحان می‌کند
+    // اگر تصویر لود نشد، آدرس بعدی از حافظه امتحان می‌شود
     el.grid.addEventListener("error", event => {
       const img = event.target;
       if (!(img instanceof HTMLImageElement) || !img.classList.contains("gift-img")) return;
 
-      let fallbacks = [];
-      try { fallbacks = JSON.parse(img.dataset.fallbacks || "[]"); } catch { }
+      const urls = imageSources.get(img.dataset.gift) || [];
+      const nextIdx = parseInt(img.dataset.idx || "0", 10) + 1;
 
-      if (fallbacks.length) {
-        img.dataset.fallbacks = JSON.stringify(fallbacks.slice(1));
-        img.src = fallbacks[0];
+      if (nextIdx < urls.length) {
+        img.dataset.idx = String(nextIdx);
+        img.setAttribute("src", urls[nextIdx]);
       } else {
         img.remove();
       }
     }, true);
 
-    // بارگذاری خودکار هنگام نزدیک شدن به انتهای صفحه
     window.addEventListener("scroll", () => {
       if (visibleCount >= filteredGifts.length) return;
 
@@ -1401,7 +1304,6 @@
       }
     }, { passive: true });
 
-    // وقتی کاربر به تب برمی‌گردد، فوراً بروزرسانی شود
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden) fastPoll();
     });
@@ -1424,7 +1326,6 @@
         if (!document.hidden) fullSync(false);
       }, CONFIG.FULL_SYNC_MS);
 
-      // کالکشن‌ها هر ۱۰ دقیقه
       setInterval(() => loadCollections().then(refresh).catch(() => { }), 600000);
     }
 
