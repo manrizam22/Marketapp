@@ -293,6 +293,14 @@
       color: var(--green);
     }
 
+    .telegram-fee {
+      margin-top: 4px;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--orange);
+      line-height: 1.4;
+    }
+
     .duration { text-align: left; }
 
     .card-actions {
@@ -445,6 +453,12 @@
 
     .modal-price strong { color: var(--green); font-size: 17px; }
 
+    .modal-price .telegram-fee {
+      margin-top: 0;
+      font-size: 10px;
+      text-align: left;
+    }
+
     .modal-meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
 
     .modal-actions {
@@ -487,6 +501,7 @@
       .gift-name { font-size: 12px; }
       .trait { font-size: 9px; }
       .price-value { font-size: 11px; }
+      .telegram-fee { font-size: 8px; }
       .duration { font-size: 9px; }
       .card-actions { grid-template-columns: 1fr; }
     }
@@ -583,6 +598,7 @@
           <div class="price-label">قیمت اجاره روزانه</div>
           <strong id="modalPrice"></strong>
         </div>
+        <small class="telegram-fee">+ ۴۰ هزار تومان کارمزد تلگرام</small>
       </div>
 
       <div class="modal-meta" id="modalDuration"></div>
@@ -613,6 +629,7 @@
 
       PAGE_SIZE: 24,
       TELEGRAM_USERNAME: "Mr_Rentify",
+      TELEGRAM_FEE_TOMAN: 40000,
     };
 
     /* ===================== وضعیت ===================== */
@@ -766,6 +783,10 @@
     function formatToman(value) {
       if (value === null) return "نامشخص";
       return `${value.toLocaleString("fa-IR")} تومان`;
+    }
+
+    function formatFeeNote() {
+      return `+ ${CONFIG.TELEGRAM_FEE_TOMAN.toLocaleString("fa-IR")} تومان کارمزد تلگرام`;
     }
 
     /* ===================== ارتباط با API ===================== */
@@ -1048,6 +1069,7 @@
               <div>
                 <div class="price-label">اجاره روزانه</div>
                 <div class="price-value">${formatToman(toman)}</div>
+                <div class="telegram-fee">${formatFeeNote()}</div>
               </div>
               <div class="duration">
                 حداکثر مدت اجاره<br>${escapeHtml(formatDuration(gift.max_duration))}
@@ -1158,7 +1180,6 @@
     }
 
     function showStaticImage(gift) {
-      // برای مودال هم آدرس‌ها از حافظه خوانده می‌شوند
       const images = imageSources.get(gift.nft_address) || getImageCandidates(gift);
 
       if (!images.length) {
