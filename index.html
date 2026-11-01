@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Gifts | فروشگاه گیفت تلگرام</title>
+  <meta name="description" content="مشاهده و اجاره گیفت‌های تلگرام">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0c0b14;
+      --surface: #151421;
+      --surface2: #201d30;
+      --border: #302b43;
+      --text: #f4f1ff;
+      --muted: #9b97b1;
+      --primary: #a78bfa;
+      --green: #34d399;
+      --orange: #fb923c;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% -10%, #33205a 0, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Vazirmatn, sans-serif;
+    }
+
+    body.modal-open { overflow: hidden; }
+
+    button, input, select { font: inherit; }
+
+    .container {
+      width: min(1250px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    header { padding: 25px 0 20px; }
+
+    .topbar, .brand, .stats, .results-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar {
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .brand { gap: 12px; }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
+      font-size: 24px;
+    }
+
+    .brand h1 { margin: 0; font-size: 20px; }
+
+    .brand p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+
+    .contact-link {
+      text-decoration: none;
+      color: white;
+      background: #222034;
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .hero {
+      margin-top: 25px;
+      padding: 30px;
+      border-radius: 22px;
+      border: 1px solid #ffffff12;
+      background: linear-gradient(120deg, #211a38, #171525 65%, #211b35);
+    }
+
+    .hero h2 { margin: 0 0 10px; font-size: clamp(23px, 4vw, 34px); }
+
+    .hero p { color: #b8b2d0; margin: 0; font-size: 14px; }
+
+    .stats { gap: 12px; flex-wrap: wrap; margin-top: 23px; }
+
+    .stat {
+      background: #ffffff0b;
+      border: 1px solid #ffffff12;
+      border-radius: 12px;
+      padding: 10px 16px;
+      min-width: 130px;
+    }
+
+    .stat span { display: block; color: var(--muted); font-size: 11px; }
+
+    .stat strong { display: block; margin-top: 4px; font-size: 17px; }
+
+    .live-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-left: 6px;
+      box-shadow: 0 0 0 0 #34d39988;
+      animation: pulse 1.8s infinite;
+    }
+
+    .live-dot.off { background: #ef4444; animation: none; }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 8px #34d39900; }
+      100% { box-shadow: 0 0 0 0 #34d39900; }
+    }
+
+    .toolbar {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field { min-width: 0; }
+
+    .field label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .control {
+      width: 100%;
+      height: 46px;
+      border: 1px solid var(--border);
+      outline: none;
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 0 13px;
+    }
+
+    .control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px #a78bfa18;
+    }
+
+    .control::placeholder { color: #77728d; }
+
+    select.control { cursor: pointer; }
+
+    .results-bar {
+      justify-content: space-between;
+      gap: 12px;
+      margin: 25px 0 15px;
+      flex-wrap: wrap;
+    }
+
+    .results-bar strong { font-size: 16px; }
+    .results-bar span { color: var(--muted); font-size: 12px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .card {
+      min-width: 0;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .image-wrap,
+    .card-body {
+      transition: transform .2s;
+    }
+
+    .card:hover {
+      border-color: #8b5cf6aa;
+      box-shadow: 0 12px 35px #0004;
+    }
+
+    .card:hover .image-wrap,
+    .card:hover .card-body {
+      transform: translateY(-4px);
+    }
+
+    .card.is-new {
+      border-color: var(--orange);
+      animation: newGlow 1.6s ease-out;
+    }
+
+    @keyframes newGlow {
+      0% { box-shadow: 0 0 0 0 #fb923c99; }
+      100% { box-shadow: 0 0 0 18px #fb923c00; }
+    }
+
+    .image-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: linear-gradient(145deg, #28243c, #171523);
+      display: grid;
+      place-items: center;
+      border-radius: 17px 17px 0 0;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: #77728d;
+      font-size: 12px;
+    }
+
+    .image-wrap img.gift-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+      z-index: 1;
+      transition: transform .25s;
+    }
+
+    .card:hover .gift-img { transform: scale(1.06); }
+
+    .gift-number {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 2;
+      background: #0c0b14df;
+      border: 1px solid #ffffff20;
+      padding: 4px 9px;
+      border-radius: 8px;
+      font-size: 10px;
+      direction: ltr;
+    }
+
+    .new-badge {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      z-index: 2;
+      background: var(--orange);
+      color: #1a1020;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 8px;
+      font-size: 10px;
+    }
+
+    .card-body { padding: 13px; }
+
+    .gift-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .collection-tag {
+      display: inline-block;
+      margin-top: 9px;
+      padding: 4px 8px;
+      border-radius: 7px;
+      background: #34d39912;
+      color: #6ee7b7;
+      border: 1px solid #34d39925;
+      font-size: 10px;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+      min-height: 25px;
+    }
+
+    .trait {
+      background: #a78bfa13;
+      color: #c4b5fd;
+      border: 1px solid #a78bfa25;
+      padding: 3px 7px;
+      border-radius: 7px;
+      font-size: 10px;
+    }
+
+    .card-info {
+      margin-top: 13px;
+      padding-top: 11px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .price-label, .duration { color: var(--muted); font-size: 10px; }
+
+    .price-value {
+      margin-top: 3px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .price-ton {
+      font-size: 10px;
+      color: var(--muted);
+      direction: ltr;
+      text-align: right;
+    }
+
+    .duration { text-align: left; }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 10px;
+      color: white;
+      font-weight: 700;
+      font-size: 12px;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn:hover { filter: brightness(1.15); }
+
+    .btn-view {
+      background: #2a2640;
+      border: 1px solid #4b4468;
+      color: #ddd6fe;
+    }
+
+    .btn-rent { background: linear-gradient(120deg, #8b5cf6, #6d28d9); }
+
+    .btn-tg {
+      background: #229ed9;
+    }
+
+    .empty, .loading, .error {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 55px 15px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+      margin-top: 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* ---------- Modal ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: #05040bd9;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal.open { display: flex; animation: fade .2s ease-out; }
+
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-box {
+      position: relative;
+      width: min(480px, 100%);
+      max-height: calc(100vh - 32px);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      animation: pop .25s ease-out;
+    }
+
+    @keyframes pop {
+      from { transform: translateY(20px) scale(.97); opacity: 0; }
+      to { transform: none; opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 5;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #0c0b14cc;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .modal-stage {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      max-width: min(100%, 42vh);
+      margin-inline: auto;
+      border-radius: 17px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 40%, #3a2c63, #171523 75%);
+      display: grid;
+      place-items: center;
+    }
+
+    .modal-stage .anim,
+    .modal-stage img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .modal-stage .stage-msg {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .modal-title {
+      margin: 16px 0 4px;
+      font-size: 18px;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .modal-price {
+      margin: 14px 0;
+      padding: 12px 14px;
+      background: #34d39910;
+      border: 1px solid #34d39930;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-price strong { color: var(--green); font-size: 17px; }
+    .modal-price small { color: var(--muted); direction: ltr; }
+
+    .modal-meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+
+    .modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    /* ---------- Toast ---------- */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 30px);
+      z-index: 200;
+      background: #231f36;
+      border: 1px solid var(--orange);
+      color: white;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media(max-width: 950px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media(max-width: 650px) {
+      .container { width: min(100% - 22px, 500px); }
+      .hero { padding: 23px 18px; }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .search-field { grid-column: 1 / -1; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .card-body { padding: 10px; }
+      .gift-name { font-size: 12px; }
+      .trait { font-size: 9px; }
+      .price-value { font-size: 11px; }
+      .duration { font-size: 9px; }
+      .card-actions { grid-template-columns: 1fr; }
+    }
+
+    @media(max-width: 360px) {
+      .grid { gap: 8px; }
+      .toolbar { grid-template-columns: 1fr; }
+      .search-field { grid-column: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-icon">🎁</div>
+          <div>
+            <h1>Telegram Gifts</h1>
+            <p>فروشگاه اجاره گیفت تلگرام</p>
+          </div>
+        </div>
+
+        <a class="contact-link" href="https://t.me/Show_me_0" target="_blank" rel="noopener">
+          ارتباط با پشتیبانی ↗
+        </a>
+      </div>
+
+      <section class="hero">
+        <h2>گیفت مورد علاقه‌ات رو پیدا کن!</h2>
+        <p>
+          لیست گیفت‌ها به‌صورت زنده بروزرسانی می‌شود؛ هر گیفت جدید بلافاصله در بالای لیست ظاهر می‌شود.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <span>تعداد کل گیفت‌ها</span>
+            <strong id="totalCount">۰</strong>
+          </div>
+
+          <div class="stat">
+            <span>نتایج جست‌وجو</span>
+            <strong id="resultCount">۰</strong>
+          </div>
+
+          <div class="stat">
+            <span>تعداد مجموعه‌ها</span>
+            <strong id="collectionCount">۰</strong>
+          </div>
+
+          <div class="stat">
+            <span><i class="live-dot" id="liveDot"></i>آخرین بروزرسانی</span>
+            <strong id="updateTime" style="font-size:12px">---</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar">
+
+        <div class="field search-field">
+          <label for="searchInput">جست‌وجوی گیفت</label>
+          <input id="searchInput" class="control" type="search" placeholder="نام یا شماره گیفت..." autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="sortSelect">مرتب‌سازی</label>
+          <select id="sortSelect" class="control">
+            <option value="newest">جدیدترین</option>
+            <option value="oldest">قدیمی‌ترین</option>
+            <option value="price-asc">ارزان‌ترین اجاره</option>
+            <option value="price-desc">گران‌ترین اجاره</option>
+            <option value="duration-asc">کمترین مدت اجاره</option>
+            <option value="duration-desc">بیشترین مدت اجاره</option>
+            <option value="number-asc">شماره صعودی</option>
+            <option value="number-desc">شماره نزولی</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="collectionFilter">دسته‌بندی / کالکشن</label>
+          <select id="collectionFilter" class="control">
+            <option value="">همه کالکشن‌ها</option>
+          </select>
+        </div>
+
+      </section>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="results-bar">
+      <strong>گیفت‌ها</strong>
+      <span id="showingText">در حال دریافت اطلاعات...</span>
+    </div>
+
+    <section class="grid" id="giftGrid">
+      <div class="loading">در حال دریافت گیفت‌ها...</div>
+    </section>
+
+  </main>
+
+  <footer>
+    Telegram Gifts Marketplace · تمامی حقوق محفوظ است
+  </footer>
+
+  <!-- مودال مشاهده گیفت -->
+  <div class="modal" id="giftModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="بستن">✕</button>
+
+      <div class="modal-stage" id="modalStage"></div>
+
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <div class="modal-meta" id="modalCollection"></div>
+      <div class="traits" id="modalTraits"></div>
+
+      <div class="modal-price">
+        <div>
+          <div class="price-label">قیمت اجاره روزانه</div>
+          <strong id="modalPrice"></strong>
+        </div>
+        <small id="modalPriceTon"></small>
+      </div>
+
+      <div class="modal-meta" id="modalDuration"></div>
+
+      <div class="modal-actions">
+        <a class="btn btn-tg" id="modalTgLink" target="_blank" rel="noopener">مشاهده در تلگرام</a>
+        <a class="btn btn-rent" id="modalRentLink" target="_blank" rel="noopener">درخواست اجاره</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+  <script>
+    /* ===================== تنظیمات ===================== */
+    const CONFIG = {
+      // آدرس Worker خودت را اینجا بگذار
+      API_BASE: "https://gifts-proxy.marketappgiftreza.workers.dev",
+      
+      TON_TO_TOMAN: 600000,       // هر تون = ۶۰۰ هزار تومان
+      LIMIT: 100,                 // تعداد گیفت در هر درخواست
+      MAX_PAGES: 300,             // سقف ایمنی صفحه‌بندی
+
+      FAST_POLL_MS: 8000,         // چک سریع صفحه اول برای گیفت جدید
+      FULL_SYNC_MS: 60000,        // همگام‌سازی کامل (حذف اجاره‌شده‌ها و ...)
+      NEW_BADGE_MS: 120000,       // مدت نمایش برچسب «جدید»
+
+      PAGE_SIZE: 24,
+      TELEGRAM_USERNAME: "Show_me_0",
+    };
+
+    /* ===================== وضعیت ===================== */
+    let giftMap = new Map();      // nft_address -> gift
+    let collections = [];
+    let collectionByAddress = new Map();
+    let collectionByKey = new Map();
+
+    let filteredGifts = [];
+    let visibleCount = 0;
+    let syncing = false;
+    let lastUpdate = 0;
+    let lottieInstance = null;
+
+    const $ = id => document.getElementById(id);
+
+    const el = {
+      grid: $("giftGrid"),
+      search: $("searchInput"),
+      sort: $("sortSelect"),
+      collection: $("collectionFilter"),
+      total: $("totalCount"),
+      result: $("resultCount"),
+      collectionCount: $("collectionCount"),
+      update: $("updateTime"),
+      showing: $("showingText"),
+      liveDot: $("liveDot"),
+      toast: $("toast"),
+      modal: $("giftModal"),
+      modalStage: $("modalStage"),
+      modalTitle: $("modalTitle"),
+      modalCollection: $("modalCollection"),
+      modalTraits: $("modalTraits"),
+      modalPrice: $("modalPrice"),
+      modalPriceTon: $("modalPriceTon"),
+      modalDuration: $("modalDuration"),
+      modalTgLink: $("modalTgLink"),
+      modalRentLink: $("modalRentLink"),
+    };
+
+    /* ===================== توابع کمکی ===================== */
+    function normalizeText(value) {
+      return String(value ?? "")
+        .toLowerCase()
+        .replace(/ي/g, "ی")
+        .replace(/ك/g, "ک")
+        .replace(/\u200c/g, " ")
+        .trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      })[char]);
+    }
+
+    function toNumber(value) {
+      if (value === null || value === undefined || value === "") return null;
+      const number = Number(value);
+      return Number.isFinite(number) ? number : null;
+    }
+
+    function formatDate(timestampMs) {
+      if (!timestampMs) return "---";
+      return new Date(timestampMs).toLocaleTimeString("fa-IR");
+    }
+
+    function formatDuration(seconds) {
+      const value = Number(seconds);
+      if (!Number.isFinite(value) || value <= 0) return "نامشخص";
+
+      const days = Math.floor(value / 86400);
+      if (days >= 1) return `${days.toLocaleString("fa-IR")} روز`;
+
+      const hours = Math.floor(value / 3600);
+      if (hours >= 1) return `${hours.toLocaleString("fa-IR")} ساعت`;
+
+      return "کمتر از یک ساعت";
+    }
+
+    function getAttributes(gift) {
+      const result = {};
+      if (!Array.isArray(gift.attributes)) return result;
+
+      gift.attributes.forEach(attribute => {
+        if (!attribute || !attribute.trait_type) return;
+        result[attribute.trait_type] = attribute.value;
+      });
+      return result;
+    }
+
+    function getGiftNumber(gift) {
+      const match = String(gift.nft_name || "").match(/#(\d+)/);
+      return match ? Number(match[1]) : null;
+    }
+
+    function getGiftBaseName(gift) {
+      const match = String(gift.nft_name || "").match(/^(.*?)\s*#\d+/);
+      return match ? match[1].trim() : String(gift.nft_name || "").trim();
+    }
+
+    // "Chill Flame #310522" -> "ChillFlame-310522" (فرمت لینک t.me/nft/...)
+    function getTelegramSlug(gift) {
+      const match = String(gift.nft_name || "").match(/^(.*?)\s*#(\d+)/);
+      if (!match) return null;
+
+      const base = match[1].replace(/[^A-Za-z0-9]/g, "");
+      return base ? `${base}-${match[2]}` : null;
+    }
+
+    function getTelegramUrl(gift) {
+      const slug = getTelegramSlug(gift);
+      return slug ? `https://t.me/nft/${slug}` : "https://t.me/";
+    }
+
+    // slug فرگمنت (حروف کوچک)
+    function getFragmentSlug(gift) {
+      const slug = getTelegramSlug(gift);
+      return slug ? slug.toLowerCase() : null;
+    }
+
+    function getImageCandidates(gift) {
+      const list = [
+        gift.image, gift.image_url, gift.thumbnail,
+        gift.preview, gift.nft_image,
+        gift.metadata && gift.metadata.image
+      ].filter(url => typeof url === "string" && /^https?:\/\//.test(url));
+
+      const slug = getFragmentSlug(gift);
+
+      if (slug) {
+        list.push(
+          `https://nft.fragment.com/gift/${slug}.medium.jpg`,
+          `https://nft.fragment.com/gift/${slug}.webp`
+        );
+      }
+      return list;
+    }
+
+    function getAnimationCandidates(gift) {
+      const list = [
+        gift.lottie, gift.lottie_url, gift.animation, gift.animation_url
+      ].filter(url => typeof url === "string" && /^https?:\/\/.+\.json/.test(url));
+
+      const slug = getFragmentSlug(gift);
+      if (slug) list.push(`https://nft.fragment.com/gift/${slug}.lottie.json`);
+
+      return list;
+    }
+
+    /* ===================== قیمت (تومان) ===================== */
+    // قیمت API بر حسب نانوتون است
+    function getPriceTon(gift) {
+      const raw = toNumber(gift.price_per_day);
+      return raw === null ? null : raw / 1e9;
+    }
+
+    function getPriceToman(gift) {
+      const ton = getPriceTon(gift);
+      return ton === null ? null : Math.round(ton * CONFIG.TON_TO_TOMAN);
+    }
+
+    function formatToman(value) {
+      if (value === null) return "نامشخص";
+      return `${value.toLocaleString("fa-IR")} تومان`;
+    }
+
+    function formatTon(ton) {
+      if (ton === null) return "";
+      return `${ton.toLocaleString("en-US", { maximumFractionDigits: 3 })} TON`;
+    }
+
+    /* ===================== ارتباط با API ===================== */
+    async function apiGet(path, params = {}) {
+      const query = new URLSearchParams(params).toString();
+      const url = `${CONFIG.API_BASE}${path}${query ? "?" + query : ""}`;
+
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status} (${path})`);
+
+      return response.json();
+    }
+
+    function extractRecords(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (!payload || typeof payload !== "object") return [];
+
+      for (const key of ["items", "results", "gifts", "collections", "data"]) {
+        const value = payload[key];
+        if (Array.isArray(value)) return value;
+        if (value && typeof value === "object") {
+          const inner = extractRecords(value);
+          if (inner.length) return inner;
+        }
+      }
+      return [];
+    }
+
+    function getNextCursor(payload, current) {
+      if (!payload || typeof payload !== "object") return null;
+
+      const candidates = [
+        payload.next_cursor, payload.next, payload.next_page, payload.cursor,
+        payload.pagination && payload.pagination.next_cursor,
+        payload.pagination && payload.pagination.next,
+        payload.page_info && payload.page_info.next_cursor,
+        payload.page_info && payload.page_info.end_cursor,
+      ];
+
+      for (const value of candidates) {
+        if (value === null || value === undefined || value === false || value === "") continue;
+        if (typeof value === "string" || typeof value === "number") {
+          if (String(value) !== String(current || "")) return String(value);
+        }
+      }
+      return null;
+    }
+
+    function fetchGiftsPage(cursor) {
+      const params = { limit: CONFIG.LIMIT };
+      if (cursor) params.cursor = cursor;
+      return apiGet("/gifts", params);
+    }
+
+    /* ===================== کالکشن‌ها ===================== */
+    // کلید نرمال برای تطبیق نام تکی گیفت با نام جمع کالکشن
+    // "Jelly Bunnies" و "Jelly Bunny" هر دو -> "jellybunny"
+    function nameKey(name) {
+      return String(name || "")
+        .toLowerCase()
+        .replace(/[^a-z]/g, "")
+        .replace(/ies$/, "y")
+        .replace(/s/g, "");
+    }
+
+    async function loadCollections() {
+      const payload = await apiGet("/collections");
+      const list = extractRecords(payload).filter(c => c && c.address && c.name);
+
+      collections = list.sort((a, b) => a.name.localeCompare(b.name));
+      collectionByAddress = new Map(collections.map(c => [c.address, c]));
+      collectionByKey = new Map(collections.map(c => [nameKey(c.name), c]));
+
+      fillCollectionSelect();
+      el.collectionCount.textContent = collections.length.toLocaleString("fa-IR");
+    }
+
+    function fillCollectionSelect() {
+      const current = el.collection.value;
+      el.collection.innerHTML = '<option value="">همه کالکشن‌ها</option>';
+
+      collections.forEach(collection => {
+        const option = document.createElement("option");
+        option.value = collection.address;
+        option.textContent = collection.name;
+        el.collection.appendChild(option);
+      });
+
+      el.collection.value = current;
+    }
+
+    function resolveCollection(gift) {
+      const address =
+        gift.collection_address ||
+        (gift.collection && (gift.collection.address || gift.collection.collection_address));
+
+      let found = address ? collectionByAddress.get(address) : null;
+
+      if (!found) found = collectionByKey.get(nameKey(getGiftBaseName(gift)));
+
+      gift.collection_name = found ? found.name : getGiftBaseName(gift);
+      gift.collection_address = found ? found.address : "";
+    }
+
+    /* ===================== آماده‌سازی گیفت ===================== */
+    function prepareGift(gift, previous, isNew) {
+      resolveCollection(gift);
+      gift._searchText = buildSearchText(gift);
+
+      if (previous && previous._newUntil) gift._newUntil = previous._newUntil;
+      if (isNew) gift._newUntil = Date.now() + CONFIG.NEW_BADGE_MS;
+
+      return gift;
+    }
+
+    function buildSearchText(gift) {
+      return normalizeText([
+        gift.nft_name, gift.nft_address, gift.collection_name,
+        ...Object.entries(getAttributes(gift)).flat()
+      ].join(" "));
+    }
+
+    /* ===================== همگام‌سازی ===================== */
+    function setLive(ok) {
+      el.liveDot.classList.toggle("off", !ok);
+    }
+
+    function touchUpdate() {
+      lastUpdate = Date.now();
+      el.update.textContent = formatDate(lastUpdate);
+      setLive(true);
+    }
+
+    // همگام‌سازی کامل: همه صفحات را می‌گیرد
+    async function fullSync(initial = false) {
+      if (syncing) return;
+      syncing = true;
+
+      try {
+        const fresh = new Map();
+        const seenCursors = new Set();
+        let cursor = null;
+
+        for (let page = 0; page < CONFIG.MAX_PAGES; page++) {
+          const payload = await fetchGiftsPage(cursor);
+          const records = extractRecords(payload);
+          if (!records.length) break;
+
+          records.forEach(gift => {
+            if (!gift || !gift.nft_address) return;
+            const old = giftMap.get(gift.nft_address);
+            // در بارگذاری اولیه هیچ گیفتی «جدید» حساب نمی‌شود
+            fresh.set(
+              gift.nft_address,
+              prepareGift(gift, old, !initial && !old)
+            );
+          });
+
+          // نمایش تدریجی در بارگذاری اولیه
+          if (initial) {
+            giftMap = new Map(fresh);
+            refresh();
+          }
+
+          const next = getNextCursor(payload, cursor);
+          if (!next || seenCursors.has(next)) break;
+
+          seenCursors.add(next);
+          cursor = next;
+        }
+
+        const addedCount = [...fresh.keys()].filter(k => !giftMap.has(k)).length;
+        const removedCount = [...giftMap.keys()].filter(k => !fresh.has(k)).length;
+
+        giftMap = fresh;
+
+        if (initial || addedCount || removedCount) refresh();
+
+        if (!initial && addedCount) showToast(`${addedCount.toLocaleString("fa-IR")} گیفت جدید اضافه شد`);
+
+        touchUpdate();
+      } catch (error) {
+        console.error("fullSync:", error);
+        setLive(false);
+
+        if (initial && giftMap.size === 0) showError(error);
+      } finally {
+        syncing = false;
+      }
+    }
+
+    // چک سریع: فقط صفحه اول؛ هر چیز جدید را اضافه می‌کند
+    async function fastPoll() {
+      if (syncing || document.hidden || giftMap.size === 0) return;
+
+      try {
+        const payload = await fetchGiftsPage(null);
+        const records = extractRecords(payload);
+
+        let added = 0;
+
+        records.forEach(gift => {
+          if (!gift || !gift.nft_address || giftMap.has(gift.nft_address)) return;
+          giftMap.set(gift.nft_address, prepareGift(gift, null, true));
+          added++;
+        });
+
+        if (added) {
+          refresh();
+          showToast(`${added.toLocaleString("fa-IR")} گیفت جدید اضافه شد`);
+        }
+
+        touchUpdate();
+      } catch (error) {
+        console.error("fastPoll:", error);
+        setLive(false);
+      }
+    }
+
+    /* ===================== فیلتر و مرتب‌سازی ===================== */
+    function applyFilters() {
+      const query = normalizeText(el.search.value);
+      const collectionAddress = el.collection.value;
+
+      filteredGifts = [...giftMap.values()].filter(gift => {
+        if (query && !gift._searchText.includes(query)) return false;
+        if (collectionAddress && gift.collection_address !== collectionAddress) return false;
+        return true;
+      });
+
+      sortGifts();
+    }
+
+    function sortGifts() {
+      const mode = el.sort.value;
+
+      const cmp = (key, dir) => (a, b) => {
+        const x = toNumber(a[key]);
+        const y = toNumber(b[key]);
+        if (x === null && y === null) return 0;
+        if (x === null) return 1;
+        if (y === null) return -1;
+        return dir === "asc" ? x - y : y - x;
+      };
+
+      const sorters = {
+        "newest": cmp("listed_at", "desc"),
+        "oldest": cmp("listed_at", "asc"),
+        "price-asc": cmp("price_per_day", "asc"),
+        "price-desc": cmp("price_per_day", "desc"),
+        "duration-asc": cmp("max_duration", "asc"),
+        "duration-desc": cmp("max_duration", "desc"),
+        "number-asc": (a, b) => (getGiftNumber(a) ?? Infinity) - (getGiftNumber(b) ?? Infinity),
+        "number-desc": (a, b) => (getGiftNumber(b) ?? -Infinity) - (getGiftNumber(a) ?? -Infinity),
+      };
+
+      filteredGifts.sort(sorters[mode] || sorters.newest);
+
+      // در حالت «جدیدترین»، گیفت‌های تازه‌اضافه‌شده همیشه بالا بمانند
+      if (mode === "newest") {
+        const now = Date.now();
+        filteredGifts.sort((a, b) =>
+          (b._newUntil > now ? 1 : 0) - (a._newUntil > now ? 1 : 0)
+        );
+      }
+    }
+
+    /* ===================== رندر ===================== */
+    function createCard(gift) {
+      const name = escapeHtml(gift.nft_name || "Gift");
+      const number = getGiftNumber(gift);
+      const isNew = gift._newUntil && gift._newUntil > Date.now();
+
+      const traits = Object.entries(getAttributes(gift))
+        .map(([k, v]) => `<span class="trait">${escapeHtml(k)}: ${escapeHtml(v)}</span>`)
+        .join("");
+
+      const ton = getPriceTon(gift);
+      const toman = getPriceToman(gift);
+
+      const images = getImageCandidates(gift);
+
+      const imageHtml = images.length
+        ? `<img class="gift-img"
+                src="${escapeHtml(images[0])}"
+                data-fallbacks="${escapeHtml(JSON.stringify(images.slice(1)))}"
+                alt="${name}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`
+        : "";
+
+      return `
+        <article class="card ${isNew ? "is-new" : ""}">
+          <div class="image-wrap">
+            <div class="image-placeholder">تصویر گیفت</div>
+            ${imageHtml}
+            ${number !== null ? `<span class="gift-number">#${number}</span>` : ""}
+            ${isNew ? `<span class="new-badge">جدید</span>` : ""}
+          </div>
+
+          <div class="card-body">
+            <h3 class="gift-name" title="${name}">${name}</h3>
+            <span class="collection-tag">${escapeHtml(gift.collection_name || "بدون مجموعه")}</span>
+            <div class="traits">${traits}</div>
+
+            <div class="card-info">
+              <div>
+                <div class="price-label">اجاره روزانه</div>
+                <div class="price-value">${formatToman(toman)}</div>
+                <div class="price-ton">${formatTon(ton)}</div>
+              </div>
+              <div class="duration">
+                حداکثر مدت اجاره<br>${escapeHtml(formatDuration(gift.max_duration))}
+              </div>
+            </div>
+
+            <div class="card-actions">
+              <button class="btn btn-view" type="button"
+                      data-view="${escapeHtml(gift.nft_address)}">مشاهده</button>
+              <a class="btn btn-rent" href="${getRentUrl(gift)}"
+                 target="_blank" rel="noopener">درخواست اجاره</a>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function getRentUrl(gift) {
+      const message =
+        `سلام، می‌خواهم گیفت ${gift.nft_name || "Gift"} را اجاره کنم.\n` +
+        `شناسه گیفت: ${gift.nft_address || ""}\n` +
+        `کالکشن: ${gift.collection_name || ""}`;
+
+      return `https://t.me/${CONFIG.TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`;
+    }
+
+    function updateStats() {
+      el.total.textContent = giftMap.size.toLocaleString("fa-IR");
+      el.result.textContent = filteredGifts.length.toLocaleString("fa-IR");
+    }
+
+    function updateShowingText() {
+      el.showing.textContent = filteredGifts.length
+        ? `${visibleCount.toLocaleString("fa-IR")} از ${filteredGifts.length.toLocaleString("fa-IR")} گیفت`
+        : "بدون نتیجه";
+    }
+
+    // رندر مجدد کل لیست با حفظ تعداد نمایش‌داده‌شده
+    function renderGifts(count) {
+      updateStats();
+
+      if (filteredGifts.length === 0) {
+        el.grid.innerHTML = `
+          <div class="empty">
+            <strong>گیفتی پیدا نشد!</strong>
+            <p>عبارت جست‌وجو یا کالکشن را تغییر بده.</p>
+          </div>`;
+        visibleCount = 0;
+        updateShowingText();
+        return;
+      }
+
+      const target = Math.min(Math.max(count, CONFIG.PAGE_SIZE), filteredGifts.length);
+      el.grid.innerHTML = filteredGifts.slice(0, target).map(createCard).join("");
+      visibleCount = target;
+      updateShowingText();
+    }
+
+    function renderMore() {
+      if (visibleCount >= filteredGifts.length) return;
+
+      const next = filteredGifts.slice(visibleCount, visibleCount + CONFIG.PAGE_SIZE);
+      el.grid.insertAdjacentHTML("beforeend", next.map(createCard).join(""));
+      visibleCount += next.length;
+      updateShowingText();
+    }
+
+    // اعمال فیلتر + رندر با حفظ جایگاه اسکرول
+    function refresh() {
+      applyFilters();
+      renderGifts(visibleCount || CONFIG.PAGE_SIZE);
+    }
+
+    // وقتی کاربر فیلتر را عوض می‌کند، از اول رندر می‌شود
+    function refreshFromStart() {
+      applyFilters();
+      renderGifts(CONFIG.PAGE_SIZE);
+    }
+
+    function showError(error) {
+      el.grid.innerHTML = `
+        <div class="error">
+          <strong>دریافت اطلاعات با مشکل مواجه شد.</strong>
+          <p>${escapeHtml(error.message)}</p>
+          <p>آدرس Worker در تنظیمات (API_BASE) و توکن را بررسی کن.</p>
+        </div>`;
+      el.showing.textContent = "خطا در دریافت اطلاعات";
+    }
+
+    let toastTimer;
+    function showToast(text) {
+      el.toast.textContent = text;
+      el.toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.toast.classList.remove("show"), 3500);
+    }
+
+    /* ===================== مودال و انیمیشن ===================== */
+    function destroyAnimation() {
+      if (lottieInstance) {
+        lottieInstance.destroy();
+        lottieInstance = null;
+      }
+      el.modalStage.innerHTML = "";
+    }
+
+    function showStaticImage(gift) {
+      const images = getImageCandidates(gift);
+      el.modalStage.innerHTML = images.length
+        ? `<img src="${escapeHtml(images[0])}" alt="${escapeHtml(gift.nft_name)}"
+                referrerpolicy="no-referrer">`
+        : `<span class="stage-msg">پیش‌نمایش در دسترس نیست</span>`;
+
+      const img = el.modalStage.querySelector("img");
+      if (img && images.length > 1) {
+        let index = 1;
+        img.addEventListener("error", () => {
+          if (index < images.length) img.src = images[index++];
+        });
+      }
+    }
+
+    function playAnimation(gift) {
+      const candidates = getAnimationCandidates(gift);
+
+      if (!candidates.length || typeof lottie === "undefined") {
+        showStaticImage(gift);
+        return;
+      }
+
+      el.modalStage.innerHTML = `<span class="stage-msg">در حال بارگذاری انیمیشن...</span>`;
+
+      const container = document.createElement("div");
+      container.className = "anim";
+
+      let index = 0;
+
+      const tryLoad = () => {
+        if (index >= candidates.length) {
+          destroyAnimation();
+          showStaticImage(gift);
+          return;
+        }
+
+        if (lottieInstance) lottieInstance.destroy();
+        container.innerHTML = "";
+
+        lottieInstance = lottie.loadAnimation({
+          container,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: candidates[index++],
+        });
+
+        lottieInstance.addEventListener("DOMLoaded", () => {
+          el.modalStage.innerHTML = "";
+          el.modalStage.appendChild(container);
+        });
+
+        lottieInstance.addEventListener("data_failed", tryLoad);
+      };
+
+      tryLoad();
+    }
+
+    function openModal(address) {
+      const gift = giftMap.get(address);
+      if (!gift) return;
+
+      destroyAnimation();
+
+      el.modalTitle.textContent = gift.nft_name || "Gift";
+      el.modalCollection.textContent = `کالکشن: ${gift.collection_name || "---"}`;
+
+      el.modalTraits.innerHTML = Object.entries(getAttributes(gift))
+        .map(([k, v]) => `<span class="trait">${escapeHtml(k)}: ${escapeHtml(v)}</span>`)
+        .join("");
+
+      el.modalPrice.textContent = formatToman(getPriceToman(gift));
+      el.modalPriceTon.textContent = formatTon(getPriceTon(gift));
+      el.modalDuration.textContent = `حداکثر مدت اجاره: ${formatDuration(gift.max_duration)}`;
+
+      el.modalTgLink.href = getTelegramUrl(gift);
+      el.modalRentLink.href = getRentUrl(gift);
+
+      el.modal.classList.add("open");
+      el.modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+
+      playAnimation(gift);
+    }
+
+    function closeModal() {
+      el.modal.classList.remove("open");
+      el.modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      destroyAnimation();
+    }
+
+    /* ===================== رویدادها ===================== */
+    el.search.addEventListener("input", refreshFromStart);
+    el.sort.addEventListener("change", refreshFromStart);
+    el.collection.addEventListener("change", refreshFromStart);
+
+    el.grid.addEventListener("click", event => {
+      const button = event.target.closest("[data-view]");
+      if (button) openModal(button.dataset.view);
+    });
+
+    $("modalClose").addEventListener("click", closeModal);
+
+    el.modal.addEventListener("click", event => {
+      if (event.target === el.modal) closeModal();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeModal();
+    });
+
+    // اگر تصویر لود نشد، آدرس بعدی را امتحان می‌کند
+    el.grid.addEventListener("error", event => {
+      const img = event.target;
+      if (!(img instanceof HTMLImageElement) || !img.classList.contains("gift-img")) return;
+
+      let fallbacks = [];
+      try { fallbacks = JSON.parse(img.dataset.fallbacks || "[]"); } catch { }
+
+      if (fallbacks.length) {
+        img.dataset.fallbacks = JSON.stringify(fallbacks.slice(1));
+        img.src = fallbacks[0];
+      } else {
+        img.remove();
+      }
+    }, true);
+
+    // بارگذاری خودکار هنگام نزدیک شدن به انتهای صفحه
+    window.addEventListener("scroll", () => {
+      if (visibleCount >= filteredGifts.length) return;
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 600) {
+        renderMore();
+      }
+    }, { passive: true });
+
+    // وقتی کاربر به تب برمی‌گردد، فوراً بروزرسانی شود
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) fastPoll();
+    });
+
+    /* ===================== شروع ===================== */
+    async function start() {
+      try {
+        await loadCollections();
+      } catch (error) {
+        console.error("collections:", error);
+        showError(error);
+        return;
+      }
+
+      await fullSync(true);
+
+      setInterval(fastPoll, CONFIG.FAST_POLL_MS);
+
+      setInterval(() => {
+        if (!document.hidden) fullSync(false);
+      }, CONFIG.FULL_SYNC_MS);
+
+      // کالکشن‌ها هر ۱۰ دقیقه
+      setInterval(() => loadCollections().then(refresh).catch(() => { }), 600000);
+    }
+
+    start();
+  </script>
+
+</body>
+
+</html>
