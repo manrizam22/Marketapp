@@ -88,7 +88,7 @@
     .toolbar {
       margin-top: 24px;
       display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
       gap: 12px;
     }
 
@@ -490,12 +490,15 @@
 
     @media(max-width: 950px) {
       .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .toolbar { grid-template-columns: 1fr 1fr 1fr; }
+      .search-field { grid-column: 1 / -1; }
     }
 
     @media(max-width: 650px) {
       .container { width: min(100% - 22px, 500px); }
       .toolbar { grid-template-columns: 1fr 1fr; }
-      .search-field { grid-column: 1 / -1; }
+      .search-field,
+      .backdrop-field { grid-column: 1 / -1; }
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .card-body { padding: 10px; }
       .gift-name { font-size: 12px; }
@@ -509,7 +512,8 @@
     @media(max-width: 360px) {
       .grid { gap: 8px; }
       .toolbar { grid-template-columns: 1fr; }
-      .search-field { grid-column: auto; }
+      .search-field,
+      .backdrop-field { grid-column: auto; }
     }
   </style>
 </head>
@@ -558,6 +562,13 @@
           <label for="collectionFilter">دسته‌بندی / کالکشن</label>
           <select id="collectionFilter" class="control">
             <option value="">همه کالکشن‌ها</option>
+          </select>
+        </div>
+
+        <div class="field backdrop-field">
+          <label for="backdropFilter">رنگ بک‌گراند</label>
+          <select id="backdropFilter" class="control">
+            <option value="">همه رنگ‌ها</option>
           </select>
         </div>
 
@@ -643,7 +654,7 @@
     let syncing = false;
     let lottieInstance = null;
 
-    // ذخیره آدرس تصاویر در حافظه (خارج از DOM) برای غیرقابل رهگیری بودن
+    // ذخیره آدرس تصاویر در حافظه (خارج از DOM)
     const imageSources = new Map(); // nft_address -> [urls]
 
     const $ = id => document.getElementById(id);
@@ -653,6 +664,7 @@
       search: $("searchInput"),
       sort: $("sortSelect"),
       collection: $("collectionFilter"),
+      backdrop: $("backdropFilter"),
       showing: $("showingText"),
       toast: $("toast"),
       modal: $("giftModal"),
@@ -710,6 +722,15 @@
         result[attribute.trait_type] = attribute.value;
       });
       return result;
+    }
+
+    // رنگ بک‌گراند گیفت؛ درصد کمیابی داخل پرانتز حذف می‌شود
+    // مثال: "Onyx Black (0.5%)" -> "Onyx Black"
+    function getBackdrop(gift) {
+      const attrs = getAttributes(gift);
+      const key = Object.keys(attrs).find(k => /backdrop|background|بک/i.test(k));
+      if (!key) return "";
+      return String(attrs[key] ?? "").replace(/\s*\(.*?\)\s*$/, "").trim();
     }
 
     function getGiftNumber(gift) {
@@ -875,6 +896,32 @@
       el.collection.value = current;
     }
 
+    // لیست رنگ‌ها را از گیفت‌های بارگذاری‌شده می‌سازد (همراه با تعداد)
+    function fillBackdropSelect() {
+      const counts = new Map();
+
+      giftMap.forEach(gift => {
+        if (!gift._backdrop) return;
+        counts.set(gift._backdrop, (counts.get(gift._backdrop) || 0) + 1);
+      });
+
+      const current = el.backdrop.value;
+
+      el.backdrop.innerHTML = '<option value="">همه رنگ‌ها</option>';
+
+      [...counts.entries()]
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .forEach(([name, count]) => {
+          const option = document.createElement("option");
+          option.value = name;
+          option.textContent = `${name} (${count.toLocaleString("fa-IR")})`;
+          el.backdrop.appendChild(option);
+        });
+
+      // اگر رنگ انتخاب‌شده هنوز وجود دارد، حفظ شود
+      el.backdrop.value = counts.has(current) ? current : "";
+    }
+
     function resolveCollection(gift) {
       const address =
         gift.collection_address ||
@@ -892,6 +939,7 @@
     function prepareGift(gift, previous, isNew) {
       resolveCollection(gift);
       gift._searchText = buildSearchText(gift);
+      gift._backdrop = getBackdrop(gift);
 
       if (previous && previous._newUntil) gift._newUntil = previous._newUntil;
       if (isNew) gift._newUntil = Date.now() + CONFIG.NEW_BADGE_MS;
@@ -986,10 +1034,12 @@
     function applyFilters() {
       const query = normalizeText(el.search.value);
       const collectionAddress = el.collection.value;
+      const backdrop = el.backdrop.value;
 
       filteredGifts = [...giftMap.values()].filter(gift => {
         if (query && !gift._searchText.includes(query)) return false;
         if (collectionAddress && gift.collection_address !== collectionAddress) return false;
+        if (backdrop && gift._backdrop !== backdrop) return false;
         return true;
       });
 
@@ -1086,7 +1136,7 @@
         </article>`;
     }
 
-    // تصاویر را بعد از رندر DOM به صورت پویا ست می‌کند (آدرس‌ها در HTML نیستند)
+    // تصاویر را بعد از رندر DOM به صورت پویا ست می‌کند
     function hydrateImages(root = document) {
       root.querySelectorAll("img.gift-img[data-gift]").forEach(img => {
         if (img.getAttribute("src")) return;
@@ -1118,7 +1168,7 @@
         el.grid.innerHTML = `
           <div class="empty">
             <strong>گیفتی پیدا نشد!</strong>
-            <p>عبارت جست‌وجو یا کالکشن را تغییر بده.</p>
+            <p>عبارت جست‌وجو، کالکشن یا رنگ بک‌گراند را تغییر بده.</p>
           </div>`;
         visibleCount = 0;
         updateShowingText();
@@ -1142,11 +1192,14 @@
       updateShowingText();
     }
 
+    // بروزرسانی زنده: لیست رنگ‌ها هم هماهنگ می‌شود
     function refresh() {
+      fillBackdropSelect();
       applyFilters();
       renderGifts(visibleCount || CONFIG.PAGE_SIZE);
     }
 
+    // وقتی کاربر فیلتر را عوض می‌کند، از اول رندر می‌شود
     function refreshFromStart() {
       applyFilters();
       renderGifts(CONFIG.PAGE_SIZE);
@@ -1285,6 +1338,7 @@
     el.search.addEventListener("input", refreshFromStart);
     el.sort.addEventListener("change", refreshFromStart);
     el.collection.addEventListener("change", refreshFromStart);
+    el.backdrop.addEventListener("change", refreshFromStart);
 
     el.grid.addEventListener("click", event => {
       const button = event.target.closest("[data-view]");
