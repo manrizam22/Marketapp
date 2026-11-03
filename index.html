@@ -1150,7 +1150,6 @@
     function getRentUrl(gift) {
       const message =
         `سلام، می‌خواهم گیفت ${gift.nft_name || "Gift"} را اجاره کنم.\n` +
-        `شناسه گیفت: ${gift.nft_address || ""}\n` +
         `کالکشن: ${gift.collection_name || ""}`;
 
       return `https://t.me/${CONFIG.TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`;
